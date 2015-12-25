@@ -15,18 +15,17 @@ public class JsBind {
     public static int RESULT_LOAD_IMG = 1;
     private Activity _context;
 
+    public int CallbackId;
+
     public JsBind(Activity context) {
         _context = context;
     }
 
-    public void loadImageFromGallery() {
+    @JavascriptInterface
+    public void loadImageFromGallery(int callbackId) {
+        CallbackId = callbackId;
         Intent galleryIntent = new Intent(Intent.ACTION_PICK,
                 MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
         _context.startActivityForResult(galleryIntent, RESULT_LOAD_IMG);
-    }
-
-    @JavascriptInterface
-    public void displayToast(String txt) {
-        Toast.makeText(_context, txt, Toast.LENGTH_LONG).show();
     }
 }
