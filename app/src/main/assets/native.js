@@ -1,14 +1,15 @@
 function Native(ctx) {
   var _context = ctx;
 
-  this.displayImageChooser = function() {
-    alert(3);
+  this.displayImageChooser = function(callbackId) {
     if (_context.loadImageFromGallery) {
-      alert('3_1');
-      _context.loadImageFromGallery();
+      _context.loadImageFromGallery(callbackId);
       return;
     }
-    alert(4);
     console.log('should be implemented with native');
+  };
+
+  this.displayToast = function(str) {
+	  _context.showToast(str);
   };
 };

@@ -8,6 +8,7 @@
 </head>
 <body>
 <input type="button" value="选择图片" onClick="chooseImage()" />
+<img id="image" />
 <hr/>
 <a href="list.html">go to list.html</a>
 <script type="text/javascript" src="jquery-2.1.4.min.js"></script>
@@ -18,7 +19,8 @@
     function chooseImage() {
         bridge.chooseImage({
             success: function(result) {
-                console.log(result);
+				console.log(result);
+                $('#image').attr("src", result);
             }
         });
     }

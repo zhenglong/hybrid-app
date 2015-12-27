@@ -48,9 +48,11 @@ function Bridge(window, native, http) {
           });
         };
       }
-      alert(2);
-      native.displayImageChooser();
+      native.displayImageChooser(funcId);
     },
+	displayToast: function(str) {
+		native.displayToast(str);
+	},
     on: function(event, callback) {
       if (!event || !callback) return;
       if (!events[event]) events[event] = [];
@@ -85,7 +87,9 @@ function Bridge(window, native, http) {
     callback: function(functionId) {
       if (!callbacks[functionId] || callbacks[functionId].isCalled) return;
       callbacks[functionId].isCalled = true;
-      var args = arguments.slice(1);
+	  console.log(functionId);
+	  console.log(arguments[1]);
+      var args = Array.prototype.slice.call(arguments, 1);
       callbacks[functionId].apply(null, args);
     }
   }
