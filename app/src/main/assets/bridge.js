@@ -1,4 +1,4 @@
-function Bridge(window, native, http) {
+;function Bridge(native_, http) {
   var callbacks = {};
   var events = {};
 
@@ -48,10 +48,10 @@ function Bridge(window, native, http) {
           });
         };
       }
-      native.displayImageChooser(funcId);
+      native_.displayImageChooser(funcId);
     },
 	displayToast: function(str) {
-		native.displayToast(str);
+		native_.displayToast(str);
 	},
     on: function(event, callback) {
       if (!event || !callback) return;

@@ -1,4 +1,4 @@
-function Native(ctx) {
+;function Native(ctx) {
   var _context = ctx;
 
   this.displayImageChooser = function(callbackId) {
