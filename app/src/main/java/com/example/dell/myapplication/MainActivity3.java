@@ -1,29 +1,28 @@
 package com.example.dell.myapplication;
 
+import android.Manifest.permission;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
-import android.os.Build;
+import android.os.Bundle;
 import android.provider.MediaStore;
-import android.provider.Settings;
+import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
-import android.support.v7.app.ActionBarActivity;
-import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.KeyEvent;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
-import android.webkit.WebViewClient;
 import android.widget.Toast;
-import android.Manifest;
-import android.Manifest.permission;
 
-public class MainActivity3 extends ActionBarActivity {
+import java.io.ByteArrayOutputStream;
+import java.io.FileInputStream;
+
+public class MainActivity3 extends AppCompatActivity {
 
     private WebView _webView;
     private  JsBind _jsBind;
@@ -58,13 +57,14 @@ public class MainActivity3 extends ActionBarActivity {
 
             int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
             String decodedImageString = cursor.getString(columnIndex);
-            Log.d(funcName, decodedImageString == null ? "empty" : decodedImageString);
             cursor.close();
+            Log.d(funcName, decodedImageString);
+            String imgBase64String;
+            FileInputStream stream = new FileInputStream(decodedImageString);
             _webView.loadUrl(String.format("javascript:bridge.callback(%1d, '%2s')",
                     _jsBind.CallbackId, decodedImageString));
         }catch (Exception e) {
-            Log.d(funcName, e.getMessage());
-            Log.d(funcName, e.getStackTrace().toString());
+            Log.d(funcName, e.getMessage(), e);
             Toast.makeText(this, "Something went wrong", Toast.LENGTH_LONG).show();
         }
     }
@@ -84,6 +84,7 @@ public class MainActivity3 extends ActionBarActivity {
                             new String[]{
                                     permission.READ_EXTERNAL_STORAGE
                             }, requestCode);
+                    readImage(data);
                 }
             } else {
                 readImage(data);
@@ -94,7 +95,7 @@ public class MainActivity3 extends ActionBarActivity {
     }
 
     @Override
-    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         switch(requestCode) {
             case JsBind.RESULT_LOAD_IMG:
                 if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {

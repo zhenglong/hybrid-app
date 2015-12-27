@@ -3,11 +3,10 @@ package com.example.dell.myapplication;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.BitmapFactory;
-import android.media.Image;
 import android.net.Uri;
-import android.provider.MediaStore;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.provider.MediaStore;
+import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -15,10 +14,10 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 
-public class MainActivity2 extends ActionBarActivity {
+public class MainActivity2 extends AppCompatActivity {
 
     private static int RESULT_LOAD_IMG = 1;
-    String imgDecodableString;
+    private String imgDecodableString;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
