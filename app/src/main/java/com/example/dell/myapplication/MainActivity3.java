@@ -4,8 +4,8 @@ import android.Manifest.permission;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
-import android.graphics.BitmapFactory;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.annotation.NonNull;
@@ -14,34 +14,60 @@ import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.KeyEvent;
+import android.view.View;
+import android.webkit.GeolocationPermissions;
 import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.widget.Toast;
 
-import java.io.ByteArrayOutputStream;
 import java.io.FileInputStream;
 
 public class MainActivity3 extends AppCompatActivity {
 
     private WebView _webView;
-    private  JsBind _jsBind;
+    private JsBind _jsBind;
+    private Intent _imageData;
+    private static final int REQUEST_LOCATION_PERMISSION = 100;
+    private String logName = "ma3";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //setContentView(R.layout.activity_main_activity3);
         _webView = new WebView(this);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            _webView.setLayerType(View.LAYER_TYPE_HARDWARE, null);
+        } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
+            _webView.setLayerType(View.LAYER_TYPE_SOFTWARE, null);
+        }
         WebSettings settings = _webView.getSettings();
         settings.setJavaScriptEnabled(true);
+        settings.setDomStorageEnabled(true);
+        settings.setAppCacheEnabled(true);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+            settings.setAllowUniversalAccessFromFileURLs(true);
+        }
         _jsBind = new JsBind(this);
         _webView.addJavascriptInterface(_jsBind, "Android");
-        _webView.loadUrl("file:///android_asset/index.html");
-        _webView.setWebChromeClient(new WebChromeClient());
+        String url = "file:///android_asset/Tasks/weixin/src/application/currentApplication.html";
+        Intent intent = this.getIntent();
+        if (intent != null) {
+            String urlParam = intent.getStringExtra("url");
+            if (urlParam != null) url = urlParam;
+        }
+        _webView.loadUrl(url);
+        _webView.setWebViewClient(new MyWebViewClient());
+        _webView.setWebChromeClient(new WebChromeClient(){
+            @Override
+            public void onGeolocationPermissionsShowPrompt(String origin, GeolocationPermissions.Callback callback) {
+                callback.invoke(origin, true, true);
+            }
+        });
         setContentView(_webView);
+        acquireLocationPermission(REQUEST_LOCATION_PERMISSION);
     }
 
-    private Intent _imageData;
     private void readImage(Intent data) {
         String funcName = "readImage";
         try {
@@ -63,10 +89,24 @@ public class MainActivity3 extends AppCompatActivity {
             FileInputStream stream = new FileInputStream(decodedImageString);
             _webView.loadUrl(String.format("javascript:bridge.callback(%1d, '%2s')",
                     _jsBind.CallbackId, decodedImageString));
-        }catch (Exception e) {
+        } catch (Exception e) {
             Log.d(funcName, e.getMessage(), e);
             Toast.makeText(this, "Something went wrong", Toast.LENGTH_LONG).show();
         }
+    }
+
+    private boolean acquireLocationPermission(int requestCode) {
+        if (ContextCompat.checkSelfPermission(this, permission.ACCESS_FINE_LOCATION)
+                != PackageManager.PERMISSION_GRANTED) {
+            if (!ActivityCompat.shouldShowRequestPermissionRationale(this, permission.ACCESS_FINE_LOCATION)) {
+                ActivityCompat.requestPermissions(this, new String[]{
+                        permission.ACCESS_FINE_LOCATION,
+                        permission.ACCESS_COARSE_LOCATION
+                }, requestCode);
+            }
+            return false;
+        }
+        return true;
     }
 
     @Override
@@ -96,12 +136,15 @@ public class MainActivity3 extends AppCompatActivity {
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        switch(requestCode) {
-            case JsBind.RESULT_LOAD_IMG:
-                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+        if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+            switch (requestCode) {
+                case JsBind.RESULT_LOAD_IMG:
                     readImage(_imageData);
-                }
-                break;
+                    break;
+                case REQUEST_LOCATION_PERMISSION:
+                    Toast.makeText(this, "succeed to request location permission", Toast.LENGTH_SHORT).show();
+                    break;
+            }
         }
     }
 
