@@ -1,0 +1,22 @@
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-xs-12">
+            <h3 class="head-bar">D3 <strong>{{d3.name}}</strong> 下属 D2</h3>
+			<div class="app-form">
+				<div class="panel-list">
+					<div class="panel panel-default">
+						<div class="panel-heading" ng-class="{'panel-info': d2.status!==0}">
+							<div class="panel--title"><a href="#/d2/?pid={{d3.id}}&pname={{d3.name}}&id={{d2.id}}&status=0">D2 {{d2.name}}</a></div>
+						</div>
+						<div class="panel-body">
+							<div class="btn-list">
+								<a ng-repeat="subItem in list" ng-class="{'alert-info':subItem.status!==0}" class="btn btn-default btn-col-4" href="#d1/?pid={{d2.id}}&pname={{d2.name}}&id={{subItem.id}}&status=0" role="button">{{subItem.name}}</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+        </div>
+    </div>
+</div>

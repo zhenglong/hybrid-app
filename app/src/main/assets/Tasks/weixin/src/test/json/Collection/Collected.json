@@ -1,0 +1,15 @@
+
+{
+	"status":0,
+	"msg": "",
+	"data": [{
+			"id":"1",
+			"fdpd":"test",
+			"collectionTimes":"2",
+			"collectionStatus":"1",
+			"idName":"test1",
+			"principal":4500,
+			"itemName":"iphone6s",
+			"name":"test store"
+		}] 
+}

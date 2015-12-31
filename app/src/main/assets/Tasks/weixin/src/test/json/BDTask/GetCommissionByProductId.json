@@ -1,0 +1,25 @@
+{
+    "status" : 0,
+    "data": [
+        { 
+             "code" : "B35E5C0B-0A0B-E411-9BA0-AC853D9F54BA" , 
+             "name" : "返佣阶梯A001"
+        },
+        { 
+             "code" : "B35E5C0B-0A0B-E411-9BA0-AC853D9F54Bb" , 
+             "name" : "返佣阶梯A002"
+        },
+        { 
+             "code" : "B35E5C0B-0A0B-E411-9BA0-AC853D9F54Bc" , 
+             "name" : "返佣阶梯A003"
+        },
+        { 
+             "code" : "B35E5C0B-0A0B-E411-9BA0-AC853D9F54Bd" , 
+             "name" : "返佣阶梯A004"
+        },
+        { 
+             "code" : "B35E5C0B-0A0B-E411-9BA0-AC853D9F54Be" , 
+             "name" : "返佣阶梯A005"
+        }
+       ]
+}

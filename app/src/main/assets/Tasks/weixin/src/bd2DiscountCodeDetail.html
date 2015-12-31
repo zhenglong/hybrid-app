@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="zh" ng-app="D3DiscountCodeListApp" class="ng-initializing">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="format-detection" content="email=no">
+    <title>统计</title>
+    <!-- inject:lib:css -->
+    <link rel="stylesheet" href="../../FE.lib/bootstrap/3.3.4/css/bootstrap.css">
+    <link rel="stylesheet" href="../../FE.lib/font-awesome/4.4.0/css/font-awesome.css">
+    <link rel="stylesheet" href="../../FE.lib/bootstrap/plugins/timepicker/css/bootstrap-timepicker.css">
+    <link rel="stylesheet" href="../../FE.lib/jquery/plugins/jstree/dist/themes/proton/style.css">
+    <link rel="stylesheet" href="css/common/app.css">
+    <!-- endinject -->
+    <!-- inject:page:css -->
+    <link rel="stylesheet" href="css/bd2DiscountCodeDetail.css">
+    <!-- endinject -->
+</head>
+<body ng-controller="D3DiscountCodeListCtrler">
+	<h3 class="head-bar">{{title}}</h3>
+	<div class="app-form">
+		<div class="panel">
+		<table class="table">
+			<thead>
+				<tr>
+					<th>D3</th>
+					<th>总数</th>
+					<th>还剩</th>
+					<th>已用</th>
+					<th>使用中</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="item in list">
+					<td><a ng-href="d3DiscountCodeDetail.html#?d3Id={{item.d3Id}}&productId={{productId}}&productName={{productName}}">{{item.d3Name}}</a></td>
+					<td><a ng-href="d3DiscountCodeDetail.html#?d3Id={{item.d3Id}}&productId={{productId}}&productName={{productName}}">{{item.total}}</a></td>
+					<td><a ng-href="d3DiscountCodeDetail.html#?d3Id={{item.d3Id}}&productId={{productId}}&productName={{productName}}">{{item.unused}}</a></td>
+					<td><a ng-href="d3DiscountCodeDetail.html#?d3Id={{item.d3Id}}&productId={{productId}}&productName={{productName}}">{{item.used}}</a></td>
+					<td><a ng-href="d3DiscountCodeDetail.html#?d3Id={{item.d3Id}}&productId={{productId}}&productName={{productName}}">{{item.inUse}}</a></td>
+				</tr>
+			</tbody>
+		</table>
+		</div>
+	</div>
+    <div loading-modal></div>
+    
+    <script type="text/javascript" src="//res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+	<!-- inject:sectionJavascript -->
+    <script src="js/common/data.js"></script>
+    <!-- endinject -->
+    <!-- inject:lib:js -->
+    <script src="../../FE.lib/jquery/1.11.1/jquery.min.js"></script>
+    <script src="../../FE.lib/bootstrap/3.3.4/js/bootstrap.js"></script>
+    <script src="../../FE.lib/bootstrap/plugins/timepicker/js/bootstrap-timepicker.js"></script>
+    <script src="../../FE.lib/angular/1.3.9/angular.min.js"></script>
+    <script src="../../FE.lib/angular/1.3.9/angular-route.min.js"></script>
+    <script src="../../FE.lib/angular/1.3.9/angular-touch.min.js"></script>
+    <script src="../../FE.lib/angular/1.3.9/angular-sanitize.min.js"></script>
+    <script src="../../FE.lib/angular/1.3.9/angular-cookies.min.js"></script>
+    <script src="../../FE.lib/angular/plugins/w5c-validator/w5cValidator.js"></script>
+    <script src="../../FE.lib/jquery/plugins/jstree/dist/jstree.min.js"></script>
+    <script src="../../FE.lib/hammer.min.js"></script>
+    <script src="../../FE.lib/iscroll.js"></script>
+    <script src="js/common/app.js"></script>
+    <!-- endinject -->
+    <!-- inject:page:js -->
+    <script src="js/bd2DiscountCodeDetail.js"></script>
+    <!-- endinject -->
+</body>
+</html>

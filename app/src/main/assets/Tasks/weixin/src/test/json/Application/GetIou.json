@@ -1,0 +1,13 @@
+{
+    "status": 0,
+	"msg": "",
+    "data": {
+            "identifier":"1234",
+			"userName":"张三",
+			"principalString":"叁千圆整",
+			"userIdNumber":"458226185412147856",
+			"merchantUserName":"李四",
+			"applicationDate":"2015-08-31",
+			"merchantStoreName":"浦电路店"
+        }
+}

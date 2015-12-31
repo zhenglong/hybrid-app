@@ -1,0 +1,54 @@
+[ {
+    "id": "CFE71FAA-26D8-E411-8442-005056C00003",
+    "text": "江东",
+    "children": [{
+        "id": "CFE71FAA-26D8-E411-8442-005056C00001",
+        "text": "孙策"
+    }, {
+        "id": "CFE71FAA-26D8-E411-8442-005056C00002",
+        "text": "孙权",
+        "children": [{
+            "id": "CFE71FAA-26D8-E411-8442-005056C00033",
+            "text": "周瑜"
+        }, {
+            "id": "CFE71FAA-26D8-E411-8442-005056C00044",
+            "text": "小诸葛"
+        }]
+    }]
+}, {
+    "id": "CFE71FAA-26D8-E411-8442-005056C00004",
+    "text": "内蒙古",
+    "children": false
+}, {
+    "id": "CFE71FAA-26D8-E411-8442-005056C00005",
+    "text": "山西",
+    "children": false
+}, {
+    "id": "CFE71FAA-26D8-E411-8442-005056C00006",
+    "text": "湖南",
+    "children": false
+}, {
+    "id": "CFE71FAA-26D8-E411-8442-005056C00007",
+    "text": "湖南",
+    "children": false
+}, {
+    "id": "CFE71FAA-26D8-E411-8442-005056C00008",
+    "text": "湖南",
+    "children": false
+}, {
+    "id": "CFE71FAA-26D8-E411-8442-005056C00009",
+    "text": "湖南",
+    "children": false
+}, {
+    "id": "CFE71FAA-26D8-E411-8442-005056C00000",
+    "text": "湖南",
+    "children": false
+}, {
+    "id": "CFE71FAA-26D8-E411-8442-005056C00011",
+    "text": "湖南",
+    "children": false
+}, {
+    "id": "CFE71FAA-26D8-E411-8442-005056C00022",
+    "text": "湖南",
+    "children": true
+}]

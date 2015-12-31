@@ -1,0 +1,35 @@
+/*===================================================*/
+/*=================Collections================*/
+.ui-listview .ui-table td {
+  vertical-align: middle; }
+
+.ui-listview .ui-table {
+  white-space: normal;
+  /*word-break: break-all;*/ }
+
+/*===================================================*/
+/*=================Collections end================*/
+/*===================================================*/
+/*=================Collection Detail================*/
+.ui-listview .ui-table td:last-child {
+  white-space: normal;
+  /*word-break: break-all;*/ }
+
+#input-record {
+  margin: 0 auto;
+  width: 96%;
+  height: 200px !important; }
+
+#input-withdraw {
+  margin: 0 auto;
+  width: 96%;
+  height: 200px !important; }
+
+.ui-listview .ui-li-static td:nth-child(2) {
+  white-space: normal;
+  word-break: break-all; }
+
+/*===================================================*/
+/*=================Collection Detail end================*/
+
+/*# sourceMappingURL=../maps/application/collectionForPDL.css.map */

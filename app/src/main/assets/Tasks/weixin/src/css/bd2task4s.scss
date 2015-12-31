@@ -1,0 +1,40 @@
+@import "common/mixins.scss";
+
+$removeBtnDefaultColor:#333;
+$removeBtnActiveColor:black;
+$removeBtnActiveBgColor:#ccc;
+a.glyphicon.glyphicon-remove {
+	padding:0.5em;
+	cursor:pointer;
+	text-decoration:none;
+	color:$removeBtnDefaultColor;
+	position:absolute;
+	right:0em;
+	top:50%;
+	margin-top:-.964em;
+	&:active, &:hover {
+		color:$removeBtnActiveColor;
+		background-color:$removeBtnActiveBgColor;
+	}
+}
+.list {
+	margin-left:0em;
+	margin-bottom:0em;
+	padding-left:.375em;
+
+	& > li {
+		padding-top:0.25em;
+		padding-bottom:0.25em;
+		line-height:2em;
+		position:relative;
+		span {
+			padding-right: 21px;
+			text-overflow: ellipsis;
+			overflow: hidden;
+			display: block;
+			width: 100%;
+			word-wrap:normal;
+			white-space:nowrap;
+		}
+	}
+}

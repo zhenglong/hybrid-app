@@ -1,0 +1,143 @@
+{
+	"status" : 0,
+	"msg" : "",
+	"data" : [
+				{
+					"d3Name" : "张三",
+					"d3Id":1,
+					"total": 30,
+					"unused" : 10,
+					"used" : 5,
+					"inUse" : 15
+				},
+				{
+					"d3Name" : "李四",
+					"d3Id":2,
+					"total": 30,
+					"unused" : 6,
+					"used" : 7,
+					"inUse" : 17
+				},
+				{
+					"d3Name" : "张三四五六齐",
+					"d3Id":3,
+					"total": 30,
+					"unused" : 10,
+					"used" : 5,
+					"inUse" : 15
+				},
+				{
+					"d3Name" : "张三",
+					"d3Id":4,
+					"total": 30,
+					"unused" : 10,
+					"used" : 5,
+					"inUse" : 15
+				},
+				{
+					"d3Name" : "李四",
+					"d3Id":5,
+					"total": 30,
+					"unused" : 6,
+					"used" : 7,
+					"inUse" : 17
+				},
+				{
+					"d3Name" : "张三",
+					"d3Id":6,
+					"total": 30,
+					"unused" : 10,
+					"used" : 5,
+					"inUse" : 15
+				},
+				{
+					"d3Name" : "李四",
+					"d3Id":7,
+					"total": 30,
+					"unused" : 6,
+					"used" : 7,
+					"inUse" : 17
+				},
+				{
+					"d3Name" : "张三",
+					"d3Id":8,
+					"total": 30,
+					"unused" : 10,
+					"used" : 5,
+					"inUse" : 15
+				},
+				{
+					"d3Name" : "李四",
+					"d3Id":9,
+					"total": 30,
+					"unused" : 6,
+					"used" : 7,
+					"inUse" : 17
+				},
+				{
+					"d3Name" : "张三",
+					"d3Id":10,
+					"total": 30,
+					"unused" : 10,
+					"used" : 5,
+					"inUse" : 15
+				},
+				{
+					"d3Name" : "李四",
+					"d3Id":11,
+					"total": 30,
+					"unused" : 6,
+					"used" : 7,
+					"inUse" : 17
+				},
+				{
+					"d3Name" : "张三",
+					"d3Id":12,
+					"total": 30,
+					"unused" : 10,
+					"used" : 5,
+					"inUse" : 15
+				},
+				{
+					"d3Name" : "李四",
+					"d3Id":13,
+					"total": 30,
+					"unused" : 6,
+					"used" : 7,
+					"inUse" : 17
+				},
+				{
+					"d3Name" : "张三",
+					"d3Id":14,
+					"total": 30,
+					"unused" : 10,
+					"used" : 5,
+					"inUse" : 15
+				},
+				{
+					"d3Name" : "李四",
+					"d3Id":15,
+					"total": 30,
+					"unused" : 6,
+					"used" : 7,
+					"inUse" : 17
+				},
+				{
+					"d3Name" : "张三",
+					"d3Id":16,
+					"total": 30,
+					"unused" : 10,
+					"used" : 5,
+					"inUse" : 15
+				},
+				{
+					"d3Name" : "李四",
+					"d3Id":17,
+					"total": 30,
+					"unused" : 6,
+					"used" : 7,
+					"inUse" : 17
+				}
+	]
+}
+

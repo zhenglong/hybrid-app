@@ -1,0 +1,43 @@
+{
+	"status":0,
+	"msg":"",
+	"data":{
+	  "modificationByUser": [{ 
+		  "telNo": "15824578548", 
+		  "modifyDate": 1448437180394 
+		},{ 
+		  "telNo": "15824578548", 
+		  "modifyDate": 1448437180394 
+		}],
+	  "modificationByThirdparty": { 
+		"telNoes": [{
+		  "telNo": "13354587585", 
+		  "modificationDate":1448437328726  
+		},{
+		  "telNo": "13354587585", 
+		  "modificationDate":1448437328726  
+		}],
+		"addresses": [
+		  {
+			"address": "上海 世纪大道", 
+			"modificationDate": 1448437328726 
+		  },{
+			"address": "上海 世纪大道", 
+			"modificationDate": 1448437328726 
+		  }
+		],
+		"bankAccounts":[
+		  {
+			"bankName": "工商银行", 
+			"bankAccount": "78458545858475", 
+			"modificationDate": 1448437328726 
+		  },{
+			"bankName": "工商银行", 
+			"bankAccount": "78458545858475", 
+			"modificationDate": 1448437328726 
+		  }
+		]
+	  }
+	}
+}
+

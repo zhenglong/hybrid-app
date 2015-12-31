@@ -1,0 +1,32 @@
+@mixin uploadFilePlaceholder($lineWidth:1px, $fontSize:1.5em, $width:5em, $height:5em, $color:#ccc) {
+	.cross-line-container {
+	  position:relative;
+	  width:$width;
+	  height:$height;
+	  margin-left:auto;
+	  margin-right:auto;
+	}
+	.h-cross-line {
+	  border-top:$lineWidth solid $color;
+	  border-bottom:$lineWidth solid $color;
+	  width:$width;
+	  position:absolute;
+	  top:50%;
+	  margin-top:-$lineWidth;
+	}
+	.v-cross-line {
+	  border-left:$lineWidth solid $color;
+	  border-right:$lineWidth solid $color;
+	  position:absolute;
+	  left:50%;
+	  top:0em;
+	  margin-left:-$lineWidth;
+	  height:$height;
+	}
+	.description {
+	  margin-top:0.25em;
+	  text-align:center;
+	  font-size:$fontSize;
+	  color:$color;
+	}
+}

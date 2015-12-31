@@ -1,0 +1,116 @@
+{
+    "status": 0,
+    "data": [
+        {
+            "status": 1, 
+            "id": "CFE71FAA-26D8-E411-8442-005056C00001",
+            "name": "张一",
+            "children": [
+                {
+                    "status": 0, 
+                    "id": "CFE71FAA-26D8-E411-8442-005056C00002",
+                    "name": "张一二寺",
+                    "children": 0
+                }, 
+                {
+                    "status": 0, 
+                    "id": "CFE71FAA-26D8-E411-8442-005056C00003",
+                    "name": "张一三",
+                    "children": 10
+                }, 
+                {
+                    "status": 0, 
+                    "id": "CFE71FAA-26D8-E411-8442-005056C00003",
+                    "name": "张一四",
+                    "children": 9
+                }, 
+                {
+                    "status": 0, 
+                    "id": "CFE71FAA-26D8-E411-8442-005056C00003",
+                    "name": "张一五",
+                    "children": 8
+                }, 
+                {
+                    "status": 1, 
+                    "id": "CFE71FAA-26D8-E411-8442-005056C00003",
+                    "name": "张一六",
+                    "children": 7
+                }
+            ]
+        },
+        {
+            "status": 0, 
+            "id": "CFE71FAA-26D8-E411-8442-005056C00001",
+            "name": "张二",
+            "children": [
+                {
+                    "status": 0, 
+                    "id": "CFE71FAA-26D8-E411-8442-005056C00002",
+                    "name": "张二二",
+                    "children": 0
+                }, 
+                {
+                    "status": 0, 
+                    "id": "CFE71FAA-26D8-E411-8442-005056C00003",
+                    "name": "张二三",
+                    "children": 10
+                }, 
+                {
+                    "status": 0, 
+                    "id": "CFE71FAA-26D8-E411-8442-005056C00003",
+                    "name": "张二四",
+                    "children": 9
+                }, 
+                {
+                    "status": 1, 
+                    "id": "CFE71FAA-26D8-E411-8442-005056C00003",
+                    "name": "张二五",
+                    "children": 8
+                }, 
+                {
+                    "status": 1, 
+                    "id": "CFE71FAA-26D8-E411-8442-005056C00003",
+                    "name": "张二六",
+                    "children": 7
+                }
+            ]
+        },
+        {
+            "status": 1, 
+            "id": "CFE71FAA-26D8-E411-8442-005056C00001",
+            "name": "张五",
+            "children": [
+                {
+                    "status": 1, 
+                    "id": "CFE71FAA-26D8-E411-8442-005056C00002",
+                    "name": "张五二",
+                    "children": 0
+                }, 
+                {
+                    "status": 1, 
+                    "id": "CFE71FAA-26D8-E411-8442-005056C00003",
+                    "name": "张五三",
+                    "children": 10
+                }, 
+                {
+                    "status": 1, 
+                    "id": "CFE71FAA-26D8-E411-8442-005056C00003",
+                    "name": "张五四",
+                    "children": 9
+                }, 
+                {
+                    "status": 1, 
+                    "id": "CFE71FAA-26D8-E411-8442-005056C00003",
+                    "name": "张五五",
+                    "children": 8
+                }, 
+                {
+                    "status": 1, 
+                    "id": "CFE71FAA-26D8-E411-8442-005056C00003",
+                    "name": "张五六",
+                    "children": 7
+                }
+            ]
+        }
+    ]
+}

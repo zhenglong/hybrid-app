@@ -1,0 +1,67 @@
+{
+  "status": 0,
+  "msg": "",
+  "data": {
+    "clientUser": {
+	  "userId":"test-userid",
+      "idName": "test",
+      "telNo": "13456754567",
+      "idNumber": "111111111111111",
+      "weiXinNickName": "storm",
+      "qq": "1547854",
+      "livingAddress": "上海市",
+      "bankName": "工行",
+      "bankAccount": "3453202458754875125",
+      "companyName": "test company",
+      "companyPhone": "021-4587965",
+      "status": [{
+        "key": "telNo",
+        "status": "1"
+      }, {
+        "key": "livingAddress",
+        "status": "1"
+      }, {
+        "key": "bankInfo",
+        "status": "1"
+      }]
+    },
+    "installmentInfo": {
+      "id": 1,
+      "productName": "iphoneiphoneiphone",
+      "merchantStoreName": "store天store天store天store天store天",
+      "todayPay": 507
+    },
+    "contactInfo": [{
+      "relationship": "父子",
+      "name": "张三",
+      "telNo": "13585478584",
+      "status": ""
+    }, {
+      "relationship": "母子",
+      "name": "张二",
+      "telNo": "13478584111",
+      "status": ""
+    }],
+    "recentContacts": ["13358457854"],
+    "collectionRecord": [{
+      "date": 1448269685620,
+      "recordBy": "李四",
+      "content": "test",
+      "collectionWay": "电话催收",
+      "customerCatalog": "无法定性，跟进中",
+      "collectionResult": "客户承诺还清",
+      "agreedPayDate": 1448269685620,
+      "agreedPayWay": "代扣"
+    },{
+      "date": 1448269685620,
+      "recordBy": "李四",
+      "content": "test",
+      "collectionWay": "电话催收",
+      "customerCatalog": "无法定性，跟进中",
+      "collectionResult": "客户承诺还清",
+      "agreedPayDate": 1448269685620,
+      "agreedPayWay": "代扣"
+    }],
+    "isWithdraw": false 
+  }
+}

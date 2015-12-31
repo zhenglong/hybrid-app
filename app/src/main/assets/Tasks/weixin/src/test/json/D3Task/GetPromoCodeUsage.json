@@ -1,0 +1,18 @@
+{
+    "status": 0,
+	"msg":"",
+    "data": 
+        [{
+			"productId":"12345-abcde",
+			"productName":"标准POS",
+			"total":30,
+			"used":10,
+			"inUse":3
+        },{
+			"productId":"12345-de111",
+			"productName":"零利率",
+			"total":10,
+			"used":2,
+			"inUse":3
+        }]
+}

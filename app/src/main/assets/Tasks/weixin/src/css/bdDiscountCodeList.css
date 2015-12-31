@@ -1,0 +1,16 @@
+body {
+  background-color: #efefef; }
+
+.panel {
+  border-color: #ddd;
+  box-shadow: 1px 1px 5px rgba(178, 178, 178, 0.4); }
+
+.table {
+  background-color: #fff; }
+  .table td {
+    padding: 0em !important; }
+  .table a {
+    display: block;
+    padding: .25em; }
+
+/*# sourceMappingURL=maps/bdDiscountCodeList.css.map */

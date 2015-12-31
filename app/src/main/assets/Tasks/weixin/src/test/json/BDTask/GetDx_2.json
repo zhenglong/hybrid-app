@@ -1,0 +1,16 @@
+{
+    "status": 0,
+    "data": {
+        "status": 1, 
+        "id": "D7EC5280-AE06-E411-9BA0-AC853D9F54BA",
+        "idName": "赵文君",
+        "idNumber": "310107197911040439",
+        "phone": "15900455698",
+        "headPhoto": "http://www.fwqtg.net/wp-content/uploads/2014/09/1.jpg",
+        "idPhoto": "http://www.fwqtg.net/wp-content/uploads/2014/09/1.jpg",
+        "district": [
+            { "id": "B35E5C0B-0A0B-E411-9BA0-AC853D9F54BA", "text": "无锡" },
+            { "id": "A35E5C0B-0A0B-E411-9BA0-AC853D9F54Br", "text": "苏州" }
+        ]
+    }
+}

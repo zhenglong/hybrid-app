@@ -1,0 +1,26 @@
+<!-- POS & S1 list -->
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-xs-12">
+			<h3 class="head-bar">D3列表</h3>
+			<div class="alert-tips bg-warning text-warning" role="alert">可为下列D3添加D2和D1</div>
+			<div class="app-form">
+				<div class="panel-list">
+					<div ng-if="isEmpty" class="alert alert-warning">尚无D3信息</div>
+					<div ng-repeat="item in list" class="panel panel-default">
+						<div class="panel-heading"  ng-class="{'panel-info': item.status!==0}">
+							<div class="panel--title"><a href="#/d3/?id={{item.id}}&status=0">D3 {{item.name}}</a></div>
+						</div>
+						<div class="panel-body">
+							<div class="btn-list">
+								<a ng-repeat="subItem in item.children" ng-class="{'alert-info':subItem.status!==0}" class="btn btn-default btn-col-6" href="#d2list/?d3name={{item.name}}&d2id={{subItem.id}}&d2name={{subItem.name}}&d2status={{subItem.status}}" role="button">{{subItem.name}} <span class="badge">{{subItem.children}}</span></a>
+								<a href="#/d2/?pid={{item.id}}&pname={{item.name}}" class="btn btn-brand btn-col-6"><span class="glyphicon glyphicon-plus"></span></a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+        </div>
+    </div>
+</div>
+<!-- /POS & S1 list -->

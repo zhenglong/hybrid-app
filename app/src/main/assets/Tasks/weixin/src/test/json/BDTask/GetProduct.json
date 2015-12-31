@@ -1,0 +1,31 @@
+{
+    "status" : 0,
+	"msg": "",
+    "data": [
+        { 
+             "code" : "B35E5C0B-0A0B-E411-9BA0-AC853D9F54Bd", 
+             "name" : "普通产品",
+			 "catalog": "1"
+        },
+        { 
+             "code" : "B35E5C0B-0A0B-E411-9BA0-AC853D9F54Be", 
+             "name" : "普通产品1",
+			 "catalog": "1"
+        },
+        { 
+             "code" : "B35E5C0B-0A0B-E411-9BA0-AC853D9F54Ba", 
+             "name" : "普通产品2",
+			 "catalog": "1"
+        },
+        { 
+             "code" : "B35E5C0B-0A0B-E411-9BA0-AC853D9F54Bb", 
+             "name" : "普通产品3",
+			 "catalog": "1"
+        },
+        { 
+             "code" : "B35E5C0B-0A0B-E411-9BA0-AC853D9F54Bc" , 
+             "name" : "零利率产品",
+			 "catalog": "2"
+        }
+       ]
+}

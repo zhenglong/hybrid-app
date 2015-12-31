@@ -1,0 +1,159 @@
+<!-- seller editor -->
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-xs-12">
+			<h3 class="head-bar">{{seller.status !== 0 ? '创建Seller' : '查看Seller'}}</h3>
+			<div ng-if="seller.status !== 0" class="alert-tips bg-warning text-warning" role="alert">请如实填写下列信息</div>
+            <div class="app-form">
+                <form name="d3Form" w5c-form-validate>
+                    <fieldset ng-disabled="seller.status === 0">
+                        <div class="form-group">
+                            <div class="panel form-panel">
+                                <div class="panel-heading">销售区域
+                                    <a type="button" class="btn btn-pannel btn-brand" data-toggle="modal" data-target="#jsTree-modal" ng-if="seller.status!==0" ng-click="getSaleTree()">请选择</span></a>
+                                </div>
+                                <div class="panel-body">
+                                    <div class="pannel-cont">
+                                        <input type="hidden" ng-model="seller.districtStr" name="districtStr" required>
+                                        <div class="btn-list">
+                                            <div ng-class="{'disable-btn-group':seller.status === 0}" class="btn-group dropup btn-col-6" ng-repeat="node in seller.district">
+                                              <div type="button" class="btn btn-default btn-text" disabled="">{{node.text}}</div>
+                                              <div type="button" class="btn btn-default btn-icon" ng-click="removeDistrict(node.id)" aria-expanded="false">
+                                                <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                                                <span class="sr-only">remove</span>
+                                              </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="input-group">
+                                <span class="input-group-addon">商户名称</span>
+                                <input type="text" class="form-control" placeholder="如实填写" ng-model="seller.name" name="name" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="input-group select-group has-danger">
+                                <span class="input-group-addon">所在地区</span>
+                                <select ng-class="{'disable-field':seller.status === 0}" class="form-control" ng-model="seller.provinceCode" ng-change="setAreas(seller.provinceCode,'CITYLIST')" ng-options="item.code as item.name for item in PROVINCELIST" name="provinceCode" required>
+                                    <option value="">请选择省(市)</option>
+                                </select>
+                                <select ng-class="{'disable-field':seller.status === 0}" class="form-control" ng-model="seller.cityCode" ng-change="setAreas(seller.cityCode,'BLOCKLIST')" ng-options="item.code as item.name for item in CITYLIST" name="cityCode" required>
+                                    <option value="">请选择市(县)</option>
+                                </select>
+                                <select ng-class="{'disable-field':seller.status === 0}" class="form-control" ng-model="seller.blockCode" ng-options="item.code as item.name for item in BLOCKLIST" name="blockCode" required>
+                                    <option value="">请选择县(区)</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="input-group">
+                                <span class="input-group-addon">商户地址</span>
+                                <input type="text" class="form-control" placeholder="XX路XX号" ng-model="seller.address" name="address" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="input-group">
+                                <span class="input-group-addon">商户固话</span>
+                                <input type="text" class="form-control" placeholder="请加上区号" ng-model="seller.phone" name="phone" required ng-pattern="/^\d{8,}$/">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="panel form-panel">
+                                <div class="panel-heading">产品配置+返佣模板
+                                    <a type="button" class="btn btn-pannel btn-brand" data-target="#product-commission-config-modal" data-toggle="modal" ng-click="onPreLoadProducts()" ng-if="seller.status!==0">请添加</span></a>
+                                </div>
+                                <div class="panel-body">
+									<ul class="list clearfix">
+										<li ng-repeat="productCommissionConfig in seller.productConfig">
+										<span>{{productCommissionConfig.product.name}}&nbsp;+&nbsp;{{productCommissionConfig.commission.name}}</span>
+										<a class="glyphicon glyphicon-remove" aria-hidden="true" ng-click="onRemoveProductConfig(prodcutCommissionConfig)" ng-if="!productCommissionConfig.readonly"></a>
+										</li>
+									</ul>
+									<input type="hidden" ng-model="seller.productConfig" name="ProductConfigHidden" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="panel form-panel">
+                                <div class="panel-heading">合作协议
+                                    <a type="button" class="btn btn-pannel btn-brand" ng-if="seller.status!==0" ng-click="chooseImage('agreementPhoto')">请选择</span></a>
+                                </div>
+                                <div class="panel-body">
+                                    <div class="panel-body-mask" ng-if="seller.status!==0" ng-click="chooseImage('agreementPhoto')"></div>
+                                    <input type="hidden" ng-model="seller.agreementPhoto" name="agreementPhoto" required>
+                                    <img class="img-block" ng-src="{{agreementPhotoUrl}}" alt="">
+									<div ng-if="!seller.agreementPhoto" upload-file-placeholder ></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="panel form-panel">
+                                <div class="panel-heading">营业执照
+                                    <a type="button" class="btn btn-pannel btn-brand" ng-if="seller.status!==0" ng-click="chooseImage('licensePhoto')">请选择</span></a>
+                                </div>
+                                <div class="panel-body">
+                                    <div class="panel-body-mask" ng-if="seller.status!==0" ng-click="chooseImage('licensePhoto')"></div>
+                                    <input type="hidden" ng-model="seller.licensePhoto" name="licensePhoto" required>
+                                    <img class="img-block" ng-src="{{licensePhotoUrl}}" alt="">
+									<div ng-if="!seller.licensePhoto" upload-file-placeholder ></div>
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+			<footer class="footer-bar">
+				<button ng-show="seller.status!==0" type="submit" form="product-commission-config-form" ng-click="submitForm()"  class="btn btn-brand btn-block btn-lg ng-hide">
+				提交
+				</button>
+				<div class="alert-tips">
+				</div>
+			</footer>
+        </div>
+    </div>
+</div>
+<!-- /seller editor -->
+<div class="modal fade" tabindex="-1" role="dialog" aria-labeledby="product-commission-config-label" id="product-commission-config-modal">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" aria-label="Close" data-dismiss="modal">
+					<span aria-hidden="true">&times;</span>
+				</button>
+				<h4 class="modal-title" id="product-commission-config-label">添加产品配置+返佣模板</h4>
+			</div>
+			<div class="modal-body">
+			<form w5c-form-validate name="productConfigForm" id="product-commission-config-form">
+				<div class="form-group">
+					<div>
+						<div>
+							<label for="ProductId">产品名称</label>
+							<select class="form-control" ng-model="productId" ng-options="item.code as item.name for item in filteredProducts" name="ProductId" required>
+								<option value="">请选择产品</option>
+							</select>
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<div>
+						<div>
+							<label for="CommissionId">返佣模板</label>
+							<select class="form-control" ng-model="commissionId" ng-options="item.code as item.name for item in filteredCommissions" name="CommissionId" required>
+								<option value="">请选择返佣模板</option>
+							</select>
+						</div>
+					</div>
+				</div>
+			</form>
+			</div>
+			<div class="modal-footer">
+				<a class="btn btn-default" data-dismiss="modal">取消</a>
+				<button class="btn btn-brand" type="submit" form="product-commission-config-form" ng-click="onAddProductConfig()">确定</button>
+			</div>
+		</div>
+	</div>
+</div>
+

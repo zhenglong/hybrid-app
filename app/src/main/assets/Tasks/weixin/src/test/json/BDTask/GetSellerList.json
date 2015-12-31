@@ -1,0 +1,54 @@
+{
+    "status": 0,
+    "data": [{
+        "status": 1,
+        "id": "CFE71FAA-26D8-E411-8442-005056C00008",
+        "name": "黄石市黄石港区恒拓通讯器材经营部",
+        "s3": {
+            "status": 0,
+            "id": "DAEC5280-AE06-E411-9BA0-AC853D9F54BA",
+            "name": "赵七"
+        },
+        "posList": [{
+            "id": "DAEC5280-AE06-E411-9BA0-AC853D9F54BA",
+            "name": "苏州多联系商贸有限公司（一部）",
+            "s1Count": 3
+        }, {
+            "id": "DAEC5280-AE06-E411-9BA0-AC853D9F54BA",
+            "name": "苏州多联系商贸有限公司（二部）",
+            "s1Count": 7
+        }]
+    }, {
+        "status": 0,
+        "id": "CFE71FAA-26D8-E411-8442-005056C00008",
+        "name": "高唐县宝芝霖电讯",
+        "s3": {
+            "status": 1,
+            "id": "DAEC5280-AE06-E411-9BA0-AC853D9F54BA",
+            "name": "赵八"
+        },
+        "posList": [{
+            "id": "DAEC5280-AE06-E411-9BA0-AC853D9F54BA",
+            "name": "苏州多联系商贸有限公司（三部）",
+            "s1Count": 3
+        }, {
+            "id": "DAEC5280-AE06-E411-9BA0-AC853D9F54BA",
+            "name": "苏州多联系商贸有限公司（4部）",
+            "s1Count": 7
+        }]
+    }, {
+        "status": 0,
+        "id": "CFE71FAA-26D8-E411-8442-005056C00008",
+        "name": "高唐县哈哈哈哈哈哈",
+        "s3": null,
+        "posList": [{
+            "id": "DAEC5280-AE06-E411-9BA0-AC853D9F54BA",
+            "name": "苏州多联系商贸有限公司（三部）",
+            "s1Count": 3
+        }, {
+            "id": "DAEC5280-AE06-E411-9BA0-AC853D9F54BA",
+            "name": "苏州多联系商贸有限公司（4部）",
+            "s1Count": 7
+        }]
+    }]
+}

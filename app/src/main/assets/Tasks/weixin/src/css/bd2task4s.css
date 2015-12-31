@@ -1,0 +1,32 @@
+a.glyphicon.glyphicon-remove {
+  padding: 0.5em;
+  cursor: pointer;
+  text-decoration: none;
+  color: #333;
+  position: absolute;
+  right: 0em;
+  top: 50%;
+  margin-top: -.964em; }
+  a.glyphicon.glyphicon-remove:active, a.glyphicon.glyphicon-remove:hover {
+    color: black;
+    background-color: #ccc; }
+
+.list {
+  margin-left: 0em;
+  margin-bottom: 0em;
+  padding-left: .375em; }
+  .list > li {
+    padding-top: 0.25em;
+    padding-bottom: 0.25em;
+    line-height: 2em;
+    position: relative; }
+    .list > li span {
+      padding-right: 21px;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      display: block;
+      width: 100%;
+      word-wrap: normal;
+      white-space: nowrap; }
+
+/*# sourceMappingURL=maps/bd2task4s.css.map */

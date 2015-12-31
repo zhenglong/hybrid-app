@@ -1,0 +1,26 @@
+{
+    "status": 0,
+    "data": {
+        "status": 0,  
+        "id": "B35E5C0B-0A0B-E411-9BA0-AC853D9F54BA",
+        "idName": "赵文君",
+        "idNumber": "310107197911040439",
+        "phone": "15900455698",
+        "companyPhone": "021-88888888",
+        "companyName": "迪信通代理",
+        "companyAddress": "昆山市玉山镇人民路31号2楼",
+        "provinceCode": "320000",
+        "cityCode": "321100",
+        "blockCode": "321100",
+        "headPhoto": "http://www.fwqtg.net/wp-content/uploads/2014/09/1.jpg",
+        "idPhoto": "http://www.fwqtg.net/wp-content/uploads/2014/09/1.jpg",
+        "district": [
+            { "id": "B35E5C0B-0A0B-E411-9BA0-AC853D9F54BA",
+            "text": "苏州" },
+            { "id": "A35E5C0B-0A0B-E411-9BA0-AC853D9F54Bc",
+            "text": "南京"  },
+            { "id": "A35E5C0B-0A0B-E411-9BA0-AC853D9F54Bb",
+            "text": "无锡无锡"  }
+        ]
+    }
+}

@@ -1,0 +1,37 @@
+{
+	"status": 0,
+    "msg": "",
+    "data": {
+        "used": [
+            {
+                "d1UserName": "陈攀",
+                "merchantStoreName": "红包测试",
+                "product": "苹果 iPhone 6 Plus",
+                "principal": 3000,
+                "useDate": "2015-09-03T17:57:38.007"
+            },
+            {
+                "d1UserName": "陈攀",
+                "merchantStoreName": "红包测试",
+                "product": "苹果 iPhone 6 Plus",
+                "principal": 3000,
+                "useDate": "2015-09-04T17:45:47.697"
+            },
+            {
+                "d1UserName": "陈攀",
+                "merchantStoreName": "红包测试",
+                "product": "苹果 iPhone 6",
+                "principal": 2300,
+                "useDate": "2015-09-05T17:27:15.617"
+            },
+            {
+                "d1UserName": "陈攀",
+                "merchantStoreName": "红包测试",
+                "product": "苹果 iPhone 6 Plus",
+                "principal": 3000,
+                "useDate": "2015-09-05T21:19:17.457"
+            }
+        ],
+        "inUse": []
+    }
+}

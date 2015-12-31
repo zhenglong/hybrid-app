@@ -1,0 +1,228 @@
+<div cf-page id="collection-details" data-active="true" >
+    <div cf-tabs id="tabs">
+        <div cf-navbar class="head-bar">
+            <ul>
+                <li><a href="#one" ng-click="onClickTab($event)" data-ajax="false" class="ui-btn-active">用户详情</a></li>
+                <li><a href="#two" ng-click="onClickTab($event)" data-ajax="false">催收记录</a></li>
+            </ul>
+        </div>
+        <div id="one" class="ui-body-a ">
+			<div class="app-form">
+				<ul  cf-listview data-inset="true">
+					<li>
+						<table class="table">
+							<tr>
+								<td class="text-larger">{{item.clientUser.idName}}</td>
+								<td class="text-larger"><a ng-href="tel:{{item.clientUser.telNo}}" class="text-brand tel" ng-class="{'cf-updated': isTelNoUpdated}">{{item.clientUser.telNo}}</a></td>
+								<td class="align-right"><button class="cf-btn ui-btn ui-btn-inline" data-toggle="modal" data-target="#historyDialog" ng-click="onShowHistory()">信息修改记录</button></td>
+							</tr>
+						</table>
+					</li>
+					<li cf-list-divider >还款信息</li>
+					<li>
+						<table class="table">
+							<tr ng-if="collectionStatus != CollectionStatus.collected">
+								<td>今日应还
+								</td>
+								<td class="text-bold">{{item.installmentInfo.todayPay}}元
+								</td>
+							</tr>
+							<tr>
+								<td class="text-ellipsis">{{item.installmentInfo.productName}}</td>
+								<td class="text-ellipsis">{{item.installmentInfo.merchantStoreName}}</td>
+							</tr>
+							<tr>
+								<td>{{item.clientUser.bankName}}</td>
+								<td ng-class="{'cf-updated': isBankAccountUpdated}">{{item.clientUser.bankAccount}}</td>
+							</tr>
+							<tr>
+								<td>电子借条</td>
+								<td>
+									<a ng-href="#/collection/{{item.installmentInfo.id}}/iou/">
+										<i class="doc"></i>
+									</a>
+								</td>
+							</tr>
+							<tr ng-if="collectionStatus != CollectionStatus.collected">
+								<td>催款授权委托书</td>
+								<td>
+									<a ng-href="#/collection/{{collectionId}}/attorneyLetter">
+										<i class="doc"></i>
+									</a>
+								</td>
+							</tr>
+						</table>
+					</li>
+					<li cf-list-divider>个人信息</li>
+					<li>
+						<table class="table">
+							<tr>
+								<td>身份证
+								</td>
+								<td>{{item.clientUser.idNumber}}
+								</td>
+							</tr>
+							<tr>
+								<td>微信名
+								</td>
+								<td>{{item.clientUser.weiXinNickName}}
+								</td>
+							</tr>
+							<tr>
+								<td>QQ号</td>
+								<td>{{item.clientUser.qq}}</td>
+							</tr>
+							<tr>
+								<td>现在住址</td>
+								<td class="line-wrap" ng-class="{'cf-updated': isLivingAddressUpdated}">{{item.clientUser.livingAddress}}</td>
+							</tr>
+						</table>
+					</li>
+					<li cf-list-divider>联系人信息</li>
+					<li>
+						<table class="table">
+							<tr ng-repeat="contact in item.contactInfo">
+								<td>{{contact.relationship}}
+								</td>
+								<td>{{contact.name}}
+								</td>
+								<td><a ng-href="{{'tel:' + contact.telNo}}" class="text-brand " ng-class="{'cf-updated': contact.status == infoStatus.new}">{{contact.telNo}}</a>
+								</td>
+							</tr>
+						</table>
+					</li>
+					<li cf-list-divider ng-if="item.recentContacts && item.recentContacts.length">近期常拨号码</li>
+					<li ng-if="item.recentContacts && item.recentContacts.length" >
+						<div ng-repeat="recentContact in item.recentContacts" class="clearfix">
+							<a class="text-brand" ng-href="{{'tel:' + recentContact}}">{{recentContact}}</a>
+						</div>
+						<div ng-if="!item.recentContacts || !item.recentContacts.length" class="clearfix">无</div>
+					</li>
+					<li cf-list-divider>工作信息</li>
+					<li>
+						<table class="table">
+							<tr>
+								<td>公司</td>
+								<td>{{item.clientUser.companyName}}</td>
+							</tr>
+							<tr>
+								<td>公司电话</td>
+								<td>
+								<a ng-href="{{'tel:' + item.clientUser.companyPhone}}" class="text-brand">{{item.clientUser.companyPhone}}</a>
+								</td>
+							</tr>
+						</table>
+					</li>
+				</ul>
+			</div>
+        </div>
+        <div id="two">
+			<div class="app-form">
+				<div id="btnList" ng-bind-html="btnList"></div>
+				<ul cf-listview data-inset="true">
+					<li ng-repeat="collectionDetail in item.collectionRecord track by $index">
+						<table class="table">
+							<tr>
+								<td>第{{$parent.recordsLen - $index}}次催收</td>
+								<td class="line-wrap">{{collectionDetail.date | date:'yyyy-MM-dd HH:mm:ss'}}</td>
+							</tr>
+							<tr>
+								<td>催收方式</td>
+								<td class="line-wrap">{{collectionDetail.collectionWay}}</td>
+							</tr>
+							<tr>
+								<td>客户定性</td>
+								<td class="line-wrap">{{collectionDetail.customerCatalog}}</td>
+							</tr>
+							<tr>
+								<td>催收结果</td>
+								<td class="line-wrap">{{collectionDetail.collectionResult}}</td>
+							</tr>
+							<tr ng-if="!!collectionDetail.agreedPayDate">
+								<td>约定还款日</td>
+								<td class="line-wrap">{{collectionDetail.agreedPayDate|date:'yyyy-MM-dd'}}</td>
+							</tr>
+							<tr ng-if="!!collectionDetail.agreedPayWay">
+								<td>约定还款方式</td>
+								<td class="line-wrap">{{collectionDetail.agreedPayWay}}</td>
+							</tr>
+							<tr ng-if="!!collectionDetail.content">
+								<td>补充：</td>
+								<td class="line-wrap">{{collectionDetail.content}}</td>
+							</tr>
+						</table>
+					</li>
+				</ul>
+			</div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" tabindex="-1" role="dialog" id="historyDialog">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-body">
+				<div cf-tabs id="historyTabs">
+					<div cf-navbar class="head-bar">
+						<ul>
+							<li><a href="#selfModification" data-ajax="false" class="ui-btn-active">用户本人修改记录</a></li>
+							<li><a href="#3rdPartyModification" data-ajax="false">第三方修复记录</a></li>
+						</ul>
+					</div>
+					<div id="selfModification">
+						<section ng-if="history.modificationByUser && history.modificationByUser.length">
+							<h4>电话修改
+							</h4>
+							<table class="table">
+								<tr ng-repeat="record in history.modificationByUser" ng-class="{'first-line':$index==0}">
+									<td>{{record.telNo}}</td>
+									<td>{{record.modifyDate | date:'yyyy-MM-dd'}}</td>
+								</tr>
+							</table>
+						</section>
+					</div>
+					<div id="3rdPartyModification">
+						<section ng-if="history.modificationByThirdparty.telNoes && history.modificationByThirdparty.telNoes.length">
+							<h4>电话修改
+							</h4>
+							<table class="table">
+								<tr ng-repeat="record in history.modificationByThirdparty.telNoes" ng-class="{'first-line':$index==0}">
+									<td>{{record.telNo}}</td>
+									<td>{{record.modificationDate | date:'yyyy-MM-dd'}}</td>
+								</tr>
+							</table>
+						</section>
+						<section ng-if="history.modificationByThirdparty.addresses && history.modificationByThirdparty.addresses.length">
+							<h4>地址修改
+							</h4>
+							<table class="table">
+								<tr ng-repeat-start="record in history.modificationByThirdparty.addresses" ng-class="{'first-line':$index==0}">
+									<td>现在地址</td>
+									<td>{{record.address}}</td>
+								</tr>
+								<tr ng-repeat-end ng-class="{'first-line':$index==0}">
+									<td class="align-right" colspan="2">{{record.modificationDate | date:'yyyy-MM-dd'}}</td>
+								</tr>
+							</table>
+						</section>
+						<section ng-if="history.modificationByThirdparty.bankAccounts && history.modificationByThirdparty.bankAccounts.length">
+							<h4>还款信息修改
+							</h4>
+							<table class="table">
+								<tr ng-repeat-start="record in history.modificationByThirdparty.bankAccounts" ng-class="{'first-line':$index==0}">
+									<td>{{record.bankName}}</td>
+									<td>{{record.bankAccount}}</td>
+								</tr>
+								<tr ng-repeat-end ng-class="{'first-line':$index==0}">
+									<td colspan="2" class="align-right">{{record.modificationDate | date:'yyyy-MM-dd'}}</td>
+								</tr>
+							</table>
+						</section>
+					</div>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-brand" data-dismiss="modal">关闭</button>
+			</div>
+        </div>
+	</div>
+</div>

@@ -1,0 +1,20 @@
+{
+  "status":0,
+  "msg":"",
+  "data": [{
+    "text": "父亲",
+    "value": "f-1"
+  },{
+    "text": "母亲",
+    "value": "f-2"
+  },{
+    "text": "其他亲属",
+    "value": "f-3"
+  },{
+    "text": "恋人",
+    "value": "f-4"
+  },{
+    "text": "配偶",
+    "value": "f-5"
+  }]
+}

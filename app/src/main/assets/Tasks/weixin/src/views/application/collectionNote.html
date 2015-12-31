@@ -1,0 +1,58 @@
+<h3 class="head-bar">
+	{{title}}
+</h3>
+<div class="app-form">
+	<div cf-page data-active="true" id="collection-note-page">
+		<form id="inputRecordForm" name="inputRecordForm">
+			<ul cf-listview>
+				<li cf-list-divider ng-class="{'error': inputRecordForm.collectionWayHidden.$error.required}">催收方式</li>
+				<li>
+					<div class="radio-list">
+						<label ng-click="onCheck($event)" ng-repeat="item in collectionWays">
+							<input value="{{item.value}}" name="collection-ways" type="radio" ng-model="$parent.item.collectionWay" data-enhanced="true" />
+							{{item.text}}
+						</label>
+					</div>
+					<input type="hidden" ng-model="item.collectionWay" name="collectionWayHidden" required />
+				</li>
+				<li cf-list-divider ng-class="{'error': inputRecordForm.customerCatalogHidden.$error.required}">客户定性</li>
+				<li>
+					<div class="radio-list">
+						<label ng-click="onCheck($event)" ng-repeat="item in customerCatalogs">
+							<input value="{{item.value}}" name="collection-ways" type="radio" ng-model="$parent.item.customerCatalog" data-enhanced="true" />
+							{{item.text}}
+						</label>
+					</div>
+					<input type="hidden" ng-model="item.customerCatalog" name="customerCatalogHidden" required />
+				</li>
+				<li cf-list-divider ng-class="{'error': inputRecordForm.collectionResultHidden.$error.required}">催收结果</li>
+				<li>
+					<div class="radio-list">
+						<label ng-click="onCheck($event)" ng-repeat="item in collectionResults">
+							<input value="{{item.value}}" name="collection-ways" type="radio" ng-model="$parent.item.collectionResult" data-enhanced="true" />
+							{{item.text}}
+						</label>
+					</div>
+					<input type="hidden" ng-model="item.collectionResult" name="collectionResultHidden" required />
+				</li>
+				<li cf-list-divider>约定还款日</li>
+				<li><input type="date" ng-model="item.agreedPayDate" id="agreedPayDate" ng-required="collectionResult != null && collectionResult != failedToCollect.text" /></li>
+				<li cf-list-divider>约定还款方式</li>
+				<li>
+					<select ng-model="item.agreedPayWay" id="agreedPayWay" ng-required="collectionResult !== null && collectionResult != failedToCollect.text">
+						<option></option>
+						<option ng-repeat="item in agreedPayWays" ng-attr-value="{{item.value}}">{{item.text}}</option>
+					</select>
+				</li>
+				<li cf-list-divider>补充说明</li>
+				<li>
+					<textarea name="Record" id="input-record" class="form-control" placeholder="填写催收信息后提交" style="minHeight: 140px;" ng-model="item.comment"></textarea>
+				</li>
+			</ul>
+		</form>
+	</div>
+	<footer class="footer-bar">
+		<button type="button" class="ui-btn btn" id="cancel-button" ng-click="onCancel()">取消</button>
+		<button type="button" class="ui-btn btn btn-brand" form="inputRecordForm" ng-click="onSubmit()" id="record-button">确定</button>
+	</footer>
+</div>

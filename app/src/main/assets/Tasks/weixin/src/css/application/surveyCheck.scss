@@ -1,0 +1,30 @@
+.app-form {
+	padding-left:1rem;
+	padding-right:1rem;
+}
+.line {
+	& .half-line {
+		&:first-child {
+			text-align:left;
+		}
+		&:last-child {
+			text-align:right;
+		}
+	}
+	& .one-third-line {
+		text-align:center;
+		&:last-child {
+			text-align:right;
+		}
+		&:first-child {
+			text-align:left;
+		}
+	}
+}
+ul {
+	padding:0;
+	list-style:none;
+}
+#question-form {
+	margin-top:1rem;
+}

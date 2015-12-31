@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="zh" ng-app="SurveyCheckApp" class="ng-initializing">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="format-detection" content="email=no">
+	<title>D1签单</title>
+	<!-- inject:jqmobile:css -->
+	<link rel="stylesheet" href="../../../FE.lib/jquerymobile/jquery.mobile-1.4.0.css">
+	<!-- endinject -->
+    <!-- inject:lib:css -->
+    <link rel="stylesheet" href="../../../FE.lib/bootstrap/3.3.4/css/bootstrap.css">
+    <link rel="stylesheet" href="../../../FE.lib/font-awesome/4.4.0/css/font-awesome.css">
+    <link rel="stylesheet" href="../../../FE.lib/bootstrap/plugins/timepicker/css/bootstrap-timepicker.css">
+    <link rel="stylesheet" href="../../../FE.lib/jquery/plugins/jstree/dist/themes/proton/style.css">
+    <link rel="stylesheet" href="../css/common/app.css">
+    <!-- endinject -->
+    <!-- inject:page:css -->
+    <link rel="stylesheet" href="../css/application/surveyCheck.css">
+    <!-- endinject -->
+</head>
+<body ng-controller="SurveyCheckCtrler">
+	<div cf-page id="myaccount" data-title="D1签单" data-active="true">
+		<h3 class="head-bar">请签单</h3>
+		<div class="app-form">
+			<div class="line">
+				<div class="half-line">{{appInfo.merchantStoreName}}</div>
+				<div class="half-line">S1 : {{appInfo.merchantUserName}}</div>
+			</div>
+			<div class="line">
+				<div class="one-third-line">{{appInfo.clientName}}</div>
+				<div class="one-third-line">￥{{appInfo.principal}}</div>
+				<div class="one-third-line">{{appInfo.productName}}</div>
+			</div>
+			<form id="question-form">
+				<ul >
+					<li ng-repeat="(key, value) in question">
+						<div class="form-group">
+							<div class="panel form-panel">
+								<div class="panel-heading">
+									{{value.displayName}}
+								</div>
+								<div class="panel-body">
+									<textarea  ng-if="value.type == MetaQuestionType.ShortAnswer" ng-attr-name="{{key}}" class="form-control" placeholder="答案是什么？">{{value.answer}}</textarea>
+									<div class="ui-controlgroup-controls" ng-if="value.type == MetaQuestionType.SingleChoice">
+										<div class="radio-list">
+											<label ng-repeat="option in value.options" ng-attr-for="{{key}}" ng-click="onRadioClick($event, value, 'Answer')">
+
+												<input type="radio" ng-attr-name="{{key}}" data-enhanced="true"  ng-value="option.key" ng-model="value.answer" />
+												{{option.value.description}}
+											</label>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</li>
+				</ul>
+			</form>
+		</div>
+		<div class="footer-bar">
+			<button id="submit-form" ng-if="BriefAppInfo.CouldSubmit" type="submit" form="question-from" ng-click="onSubmit()" class="ui-btn btn btn-brand" ng-cloak ng-class="{'hide':!BriefAppInfo.CouldSubmit}">提交
+			</button>
+		</div>
+	</div>
+	<div loading-modal></div>
+	<div confir-modal></div>
+	<!-- inject:sectionJavascript -->
+    <script src="../js/common/data.js"></script>
+    <!-- endinject -->
+    <!-- inject:lib:js -->
+    <script src="../../../FE.lib/jquery/1.11.1/jquery.min.js"></script>
+    <script src="../../../FE.lib/bootstrap/3.3.4/js/bootstrap.js"></script>
+    <script src="../../../FE.lib/bootstrap/plugins/timepicker/js/bootstrap-timepicker.js"></script>
+    <script src="../../../FE.lib/angular/1.3.9/angular.min.js"></script>
+    <script src="../../../FE.lib/angular/1.3.9/angular-route.min.js"></script>
+    <script src="../../../FE.lib/angular/1.3.9/angular-touch.min.js"></script>
+    <script src="../../../FE.lib/angular/1.3.9/angular-sanitize.min.js"></script>
+    <script src="../../../FE.lib/angular/1.3.9/angular-cookies.min.js"></script>
+    <script src="../../../FE.lib/angular/plugins/w5c-validator/w5cValidator.js"></script>
+    <script src="../../../FE.lib/jquery/plugins/jstree/dist/jstree.min.js"></script>
+    <script src="../../../FE.lib/hammer.min.js"></script>
+    <script src="../../../FE.lib/fastclick.js"></script>
+    <script src="../js/common/app.js"></script>
+    <!-- endinject -->
+    <!-- inject:page:js -->
+    <script src="../js/application/surveyCheck.js"></script>
+    <!-- endinject -->
+	<!-- inject:jqmobile:js -->
+    <script src="../../../FE.lib/jquerymobile/jquery.mobile-1.4.0.js"></script>
+    <!-- endinject -->
+</body>
+</html>

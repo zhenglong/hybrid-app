@@ -1,0 +1,171 @@
+/*********************************************************/
+/*********************current application*****************/
+a:visited, a:active {
+  text-decoration: none;
+  outline: none; }
+
+#applications .head-bar {
+  padding-top: 0em;
+  padding-bottom: 0em; }
+
+.time_icon {
+  width: auto;
+  height: 0.8em;
+  padding-right: 1px; }
+
+.time_status {
+  line-height: 15px;
+  vertical-align: middle;
+  padding-top: 0.5em; }
+
+.time_content {
+  padding-right: 10px; }
+
+.sign-btn {
+  font-size: 1.25em; }
+
+.instalment_status {
+  font-weight: bold; }
+
+.canceled {
+  color: #5d5d5d; }
+
+.rejected {
+  color: #d42818; }
+
+.completed {
+  color: #48945f; }
+
+.reported {
+  color: #5d5d5d; }
+
+.extend_icon {
+  float: right;
+  width: auto;
+  height: 2em;
+  padding: 0.3em 0.5em 0.3em 0em; }
+
+.instalment_operation {
+  font-weight: bold; }
+
+.user_info {
+  padding-top: 1em; }
+
+.s1_info, .pos_info, .user_weixin_info {
+  line-height: 1.2em;
+  padding-top: 0.5em; }
+
+.user_weixin_info {
+  padding-bottom: 1em; }
+
+.instalment_action {
+  padding-top: 1em;
+  text-align: center; }
+
+#refreshHeader {
+  line-height: 2.8rem;
+  text-align: center;
+  vertical-align: middle;
+  font-weight: normal;
+  margin-bottom: 0px;
+  background-color: #fff;
+  color: #888;
+  text-shadow: none; }
+
+#refreshHeader .glyphicon.glyphicon-refresh {
+  float: right;
+  position: relative;
+  right: 2em;
+  color: #69B947; }
+
+.fa.fa-thumbs-o-up {
+  color: #69B947; }
+
+#item_details .btn, #Recommend .btn {
+  width: 8em; }
+
+.cross {
+  height: 1em; }
+
+#reported_text {
+  text-align: center;
+  color: #5d5d5d;
+  font-weight: bold; }
+
+#recommend_text {
+  text-align: center;
+  color: #67b845;
+  font-weight: bold; }
+
+.description {
+  margin-top: 1.4em;
+  margin-bottom: 0.5em;
+  display: none; }
+
+.request-with-cid, .request-with-cid-appid {
+  cursor: pointer; }
+
+#input-report {
+  margin: 0 auto;
+  width: 96%;
+  height: 200px !important; }
+
+#input-recommend {
+  margin: 0 auto;
+  width: 96%;
+  height: 200px !important; }
+
+.s1_info_details {
+  margin: 10px 0; }
+
+.info_details a {
+  letter-spacing: 0.05em; }
+
+.survey-check-btn {
+  font-size: large;
+  color: red;
+  position: absolute;
+  top: 5px;
+  right: 5px; }
+
+.report-option-label {
+  text-align: center !important;
+  width: 85% !important;
+  font-size: small !important;
+  border-width: 1px !important; }
+
+.app-form {
+  margin-top: 77px; }
+
+#applications .ui-listview > li, #currentWarningMerchantStoreNames .ui-listview > li {
+  border-top: 0; }
+
+.glyphicon.clickable {
+  padding: 0.85938rem; }
+  @media screen and (min-device-width: 375px) and (max-device-width: 776px) and (-webkit-min-device-pixel-ratio: 2) {
+    .glyphicon.clickable {
+      padding: 1.00708rem; } }
+
+.clickable:active {
+  background-color: #ddd; }
+
+/*********************************************************/
+/*********************current application end*****************/
+/*********************************************************/
+/*********************current application*****************/
+.alert-categories span {
+  border: 1px solid #ddd;
+  padding: .5rem;
+  margin-right: 1rem;
+  margin-bottom: 1rem;
+  letter-spacing: .2rem;
+  display: inline-block; }
+
+#Report .app-form {
+  padding-left: 1rem;
+  padding-right: 1rem; }
+
+/*********************************************************/
+/*********************current application end*****************/
+
+/*# sourceMappingURL=../maps/application/currentApplication.css.map */

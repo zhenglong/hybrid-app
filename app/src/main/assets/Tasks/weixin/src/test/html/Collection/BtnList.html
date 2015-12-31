@@ -1,0 +1,11 @@
+<div class="cf-table">
+	<div class="span-one-third">
+		<a class="ui-btn ui-btn-inline btn-success" id="record-button" ng-href="#/collectionNote/{{collectionId}}/?type=record&name={{item.clientUser.idName}}">记录</a>
+	</div>
+	<div class="span-one-third">
+		<a ng-href="{{item.isWithdraw ? '' : '#/collectionNote/{0}/?type=withdraw&name={1}'.format(collectionId, item.clientUser.idName)}}" class="ui-btn ui-btn-inline btn-danger" id="withdraw-button">退案</a>
+	</div>
+	<div class="span-one-third">
+		<a ng-href="#/collection/{{item.installmentInfo.id}}/repair/?backUrl={{backUrl}}" class="ui-btn ui-btn-inline btn-brand" id="withdraw-button">信息修复</a>
+	</div>
+</div>

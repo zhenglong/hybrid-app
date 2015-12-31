@@ -1,0 +1,17 @@
+	<div data-role="page" id="myaccount" data-title="{{title}}">
+		<p ng-if="!list.length">今日无催收！</p>
+		<ul data-role="listview" data-inset="true" id="collection-list">
+			<li ng-repeat="item in list">
+			<a ng-href="/collection/{{item.Id}}/" >
+				<div class="clearfix">
+					<div class="pull-left">FPD&nbsp;{{item.FDPD}}&nbsp;催{{item.CollectionTimes}}次</div>
+					<div class="pull -right text-warning">{{(item.CollectionStatus == CollectionStatus.Fraud) ? '已退案' : ''}}</div>
+				</div>
+				<div class="clearfix">
+					<div class="pull-left">{{item.User.IdName}}</div>
+					<div class="pull-right">{{item.Principal}}</div>
+				</div>
+				</a>
+			</li>
+		</ul>
+	</div>

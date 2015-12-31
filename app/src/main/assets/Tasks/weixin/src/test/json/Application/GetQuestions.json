@@ -1,0 +1,50 @@
+{
+    "status": 0,
+    "data": {
+		"appInfo": {
+			"id":1,
+			"merchantStoreName": "世纪大道店",
+			"merchantUserName":"test id name",
+			"clientName":"张三",
+			"principal":4000,
+			"productName":"iphone 5s",
+			"couldSubmit":true
+		},
+		"question":{
+			"q1":{
+				"type":0,
+				"options":[
+					{
+						"key":"o1",
+						"value":{
+							"description":"选项一"
+						}
+					},
+					{
+						"key":"o2",
+						"value":{
+							"description":"选项二"
+						}
+					},
+					{
+						"key":"o3",
+						"value":{
+							"description":"选项三"
+						}
+					}
+				],
+				"answer":"o2",
+				"displayName":"问题一"
+			},
+			"q2":{
+				"displayName":"问题二",
+				"type":1,
+				"answer":"test"
+			},
+			"q3":{
+				"displayName":"问题三",
+				"type":1
+			}
+		}
+	}
+}

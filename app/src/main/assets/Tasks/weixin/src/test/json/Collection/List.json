@@ -1,0 +1,41 @@
+{
+    "status": 0,
+	"msg": "",
+    "data": [
+        {
+			"collectionId":"collection-1",
+			"appId": "app-1",
+			"fdpd":10,
+			"mNth": 1,
+			"collectionTimes":2,
+			"collectionStatus":"待催收",
+			"idName":"张小四",
+			"principal":4500,
+			"itemName":"苹果 iphone6s苹果 iphone6s",
+			"name":"test store test store test store test store test store test store",
+			"warnLevel": 90,
+			"states": [
+				{
+					"state": 1000,
+					"warnLevel":30
+				}
+			]
+		},
+        {
+			"collectionId":"collection-2",
+			"appId": "app-2",
+			"fdpd":"9",
+			"mNth": "1",
+			"collectionTimes":"2",
+			"collectionStatus":"1",
+			"idName":"test1",
+			"principal":4500,
+			"itemName":"苹果 iphone6s",
+			"name":"test store",
+			"warnLevel": 90
+		}
+    ]
+}
+
+
+

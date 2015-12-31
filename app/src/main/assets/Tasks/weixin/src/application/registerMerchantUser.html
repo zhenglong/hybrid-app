@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="zh" ng-app="RegisterMerchantUserApp">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="format-detection" content="email=no">
+	<title>{{title}}</title>
+    <!-- inject:lib:css -->
+    <link rel="stylesheet" href="../../../FE.lib/bootstrap/3.3.4/css/bootstrap.css">
+    <link rel="stylesheet" href="../../../FE.lib/font-awesome/4.4.0/css/font-awesome.css">
+    <link rel="stylesheet" href="../../../FE.lib/bootstrap/plugins/timepicker/css/bootstrap-timepicker.css">
+    <link rel="stylesheet" href="../../../FE.lib/jquery/plugins/jstree/dist/themes/proton/style.css">
+    <link rel="stylesheet" href="../css/common/app.css">
+    <!-- endinject -->
+    <!-- inject:page:css -->
+    <!-- endinject -->
+</head>
+<body ng-controller="RegisterMerchantUserCtrler" >
+<div data-role="page" id="register_merchant_user" data-title="RegisterMerchantUser">
+    <div data-role="header">
+        <h1>注册买单侠伙伴账号</h1>
+    </div>
+    <div role="main" class="ui-content" id="container">
+        <label>请确保您的资料已提交给我们的销售人员。如果您还未提交，请联系买单侠销售人员。谢谢！</label>
+        <br />
+		<form id="form_RegisterMerchantUser" w5c-form-validate>
+			<div>
+				<label>手机号码</label>
+				<input type="tel" placeholder="请输入您的手机号码" ng-pattern="^1[3|4|5|7|8][0-9]\d{4,8}$" class="mobile_text_box" ng-model="telNo" />
+			</div>
+            <div class="ui-grid-a">
+                <div class="ui-block-a">
+					<label>手机验证码</label>
+					<input type="text" placeholder="请输入验证码" required="required" class="mobile_validation_code" ng-model="validationCode" />
+                </div>
+                <div class="ui-block-b">
+					<button id="send_mobile_validate_code" ng-disabled="{{!$scope.telNo}}" class="ui-btn ui-corner-all ui-shadow ui-btn-b" ng-click="onSendValidationCode()">发送验证码</button>
+                </div>
+            </div>
+            <button id="register_submit" class="ui-btn ui-shadow ui-corner-all ui-btn-b" type="submit"  w5c-form-submit="onRegister()">注册</button>
+		</form>
+    </div><!-- /content -->
+</div><!-- /page -->
+	<!-- directive:loading-modal -->
+	<!-- directive:common-modal -->
+    <!-- inject:lib:js -->
+    <script src="../../../FE.lib/jquery/1.11.1/jquery.min.js"></script>
+    <script src="../../../FE.lib/bootstrap/3.3.4/js/bootstrap.js"></script>
+    <script src="../../../FE.lib/bootstrap/plugins/timepicker/js/bootstrap-timepicker.js"></script>
+    <script src="../../../FE.lib/angular/1.3.9/angular.min.js"></script>
+    <script src="../../../FE.lib/angular/1.3.9/angular-route.min.js"></script>
+    <script src="../../../FE.lib/angular/1.3.9/angular-touch.min.js"></script>
+    <script src="../../../FE.lib/angular/1.3.9/angular-sanitize.min.js"></script>
+    <script src="../../../FE.lib/angular/1.3.9/angular-cookies.min.js"></script>
+    <script src="../../../FE.lib/angular/plugins/w5c-validator/w5cValidator.js"></script>
+    <script src="../../../FE.lib/jquery/plugins/jstree/dist/jstree.min.js"></script>
+    <script src="../../../FE.lib/hammer.min.js"></script>
+    <script src="../../../FE.lib/iscroll.js"></script>
+    <script src="../js/common/app.js"></script>
+    <!-- endinject -->
+    <!-- inject:page:js -->
+    <script src="../js/application/registerMerchantUser.js"></script>
+    <!-- endinject -->
+</body>
+</html>

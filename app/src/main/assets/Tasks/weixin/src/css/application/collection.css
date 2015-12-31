@@ -1,0 +1,389 @@
+@charset "UTF-8";
+/* -------------------------------------------------------------
+  Sass CSS3 Mixins! The Cross-Browser CSS3 Sass Library
+  By: Matthieu Aussaguel, http://www.mynameismatthieu.com, @matthieu_tweets
+
+  List of CSS3 Sass Mixins File to be @imported and @included as you need
+
+  The purpose of this library is to facilitate the use of CSS3 on different browsers avoiding HARD TO READ and NEVER
+  ENDING css files
+
+  note: All CSS3 Properties are being supported by Safari 5
+  more info: http://www.findmebyip.com/litmus/#css3-properties
+
+  Mixins available:
+    -   css3-prefix             - arguments: Property, Value
+    -   background-gradient     - arguments: Start Color: #3C3C3C, End Color: #999999
+    -   background-horizontal   - arguments: Start Color: #3C3C3C, End Color: #999999
+    -   background-radial       - arguments: Start Color: #FFFFFF, Start position: 0%, End Color: #000000, End position: 100%
+    -   background-size         - arguments: Width: 100%, Height: 100%
+    -   background-opacity      - arguments: Color: #000, Opacity: .85
+    -   border-radius           - arguments: Radius: 5px
+    -   border-radius-separate  - arguments: Top Left: 5px, Top Right: 5px, Bottom Left: 5px, Bottom Right: 5px
+    -   box                     - arguments: Orientation: horizontal, Pack: center, Align: center
+    -   box-rgba                - arguments: R: 60, G: 3, B: 12, Opacity: 0.23, Color: #3C3C3C
+    -   box-shadow              - arguments: X: 2px, Y: 2px, Blur: 5px, Color: rgba(0,0,0,.4)
+    -   box-sizing              - arguments: Type: border-box
+    -   columns                 - arguments: Count: 3, Gap: 10
+    -   double-borders          - arguments: Color One: #3C3C3C, Color Two: #999999, Radius: 0
+    -   flex                    - arguments: Value: 1
+    -   flip                    - arguments: ScaleX: -1
+    -   font-face               - arguments: Font Family: myFont, Eot File Src: myFont.eot, Woff File Src: myFont.woff, Ttf File Src: myFont.ttf
+    -   opacity                 - arguments: Opacity: 0.5
+    -   outline radius          - arguments: Radius: 5px
+    -   resize                  - arguments: Direction: both
+    -   rotate                  - arguments: Degree: 0, M11: 0, M12: 0, M21: 0, M22: 0
+    CSS Matrix Rotation Calculator http://www.boogdesign.com/examples/transforms/matrix-calculator.html
+    -   text-shadow             - arguments: X: 2px, Y: 2px, Blur: 5px, Color: rgba(0,0,0,.4)
+    -   transform               - arguments: Parameters: null
+    -   transform-style         - arguments: Style: preserve-3d
+    -   transition              - Default arguments: What: all, Length: 1s, Easing: ease-in-out
+    -                            - Examples: @include transition (all 2s ease-in-out);
+    -                                        @include transition (opacity 1s ease-in 2s, width 2s ease-out);
+    -   triple-borders          - arguments: Color One: #3C3C3C, Color Two: #999999, Color Three: #000000, Radius: 0
+    -   keyframes               - arguments: Animation name
+                                - content:   Animation css
+    -   animation               - arguments: name duration timing-function delay iteration-count direction fill-mode play-state
+                                             (http://www.w3schools.com/cssref/css3_pr_animation.asp)
+
+------------------------------------------------------------- */
+/*===================================================*/
+/*=================Collections================*/
+#collections-head {
+  background-color: white;
+  padding-bottom: 0em; }
+  #collections-head > p {
+    color: #787677; }
+  #collections-head .ui-btn {
+    color: #787677;
+    border-color: #ddd;
+    text-shadow: none; }
+    #collections-head .ui-btn.ui-btn-active {
+      color: white; }
+
+#collections-form {
+  margin-top: 9.33359rem; }
+  #collections-form .ui-btn {
+    font-size: 1rem;
+    font-weight: normal; }
+    @media screen and (min-device-width: 375px) and (max-device-width: 776px) and (-webkit-min-device-pixel-ratio: 2) {
+      #collections-form .ui-btn {
+        font-size: 1.17188rem; } }
+  @media screen and (min-device-width: 375px) and (max-device-width: 776px) and (-webkit-min-device-pixel-ratio: 2) {
+    #collections-form {
+      margin-top: 10.93781rem; } }
+
+.table {
+  margin-bottom: 0em;
+  padding: 0em; }
+  .table > tbody > tr > td {
+    border-top: 0em;
+    vertical-align: middle;
+    padding-left: 0;
+    padding-right: 0; }
+    .table > tbody > tr > td:first-child {
+      width: 7.5rem; }
+
+.table.set-last-width > tbody > tr > td:last-child {
+  width: 40%; }
+  @media screen and (min-device-width: 375px) and (max-device-width: 776px) and (-webkit-min-device-pixel-ratio: 2) {
+    .table.set-last-width > tbody > tr > td:last-child {
+      width: 46.875%; } }
+
+.glyphicon.glyphicon-option-horizontal {
+  padding: 1em 0em 1em 2em; }
+
+.ui-page-theme-a a, .ui-page-theme-a a:visited {
+  color: #787677;
+  display: block; }
+
+.ui-listview {
+  border: 1px solid #ddd;
+  border-bottom: 0em; }
+
+.ui-listview li.ui-li-static {
+  border: 0em;
+  border-radius: 0em; }
+
+.ui-listview > li.ui-last-child > a.ui-btn, .ui-listview > li.ui-first-child > a.ui-btn {
+  -webkit-border-radius: 0em;
+  -khtml-border-radius: 0em;
+  -moz-border-radius: 0em;
+  -ms-border-radius: 0em;
+  -o-border-radius: 0em;
+  border-radius: 0em;
+  border: 0em; }
+
+.ui-listview > li:nth-child(n+2) > a.ui-btn, .ui-listview > li.ui-li-static:nth-child(n+2) {
+  border-top: 1px solid #ddd; }
+
+.ui-listview > li:first-child > a.ui-btn, .ui-listview > li.ui-li-static:first-child {
+  -webkit-border-top-left-radius: .3125em;
+  -webkit-border-top-right-radius: .3125em;
+  border-top-left-radius: .3125em;
+  border-top-right-radius: .3125em; }
+
+.ui-listview > li:last-child > a.ui-btn, .ui-listview > li.ui-li-static:last-child {
+  -webkit-border-bottom-left-radius: .3125em;
+  -webkit-border-bottom-right-radius: .3125em;
+  border-bottom-left-radius: .3125em;
+  border-bottom-right-radius: .3125em; }
+
+.pills {
+  padding: 0em;
+  margin: 0em;
+  background-color: #f2f2f2;
+  list-style-type: none; }
+  .pills:after {
+    content: "";
+    display: block;
+    width: 0em;
+    height: 0em;
+    clear: both; }
+  .pills > li {
+    float: left;
+    font-size: 0.93336rem;
+    color: #787677;
+    width: 33.33333%; }
+    @media screen and (min-device-width: 375px) and (max-device-width: 775px) and (-webkit-min-device-pixel-ratio: 2) {
+      .pills > li {
+        font-size: 1.09378rem; } }
+    .pills > li a {
+      text-decoration: none;
+      display: block;
+      line-height: 2.7rem;
+      color: #787677;
+      text-shadow: none;
+      border-bottom: 1px inset #ddd;
+      padding-bottom: 2px; }
+      @media screen and (min-device-width: 375px) and (max-device-width: 775px) and (-webkit-min-device-pixel-ratio: 2) {
+        .pills > li a {
+          line-height: 3.16406rem; } }
+      .pills > li a.ui-btn-active {
+        color: #964D2A;
+        padding-bottom: 0px;
+        border-bottom: 3px inset #964D2A; }
+
+.ui-listview > .content-placeholder {
+  text-align: center;
+  font-size: 2rem;
+  line-height: 4rem; }
+
+.glyphicon.glyphicon-chevron-right {
+  color: #aaa; }
+
+/*===================================================*/
+/*=================Collections end================*/
+/*===================================================*/
+/*=================Collection Detail================*/
+.head-bar.ui-navbar {
+  background-color: transparent;
+  padding: 0em; }
+
+.data-title {
+  color: #777777;
+  font-size: 0.85em; }
+
+.data-content {
+  white-space: normal;
+  word-wrap: break-word;
+  max-width: 50%;
+  text-align: right; }
+
+#input-record {
+  margin: 0em auto;
+  width: 96%;
+  height: 200px !important; }
+
+#input-withdraw {
+  margin: 0em auto;
+  width: 96%;
+  height: 200px !important; }
+
+#two .app-form {
+  margin-top: 39px; }
+
+.ui-listview > li p {
+  text-overflow: inherit;
+  overflow: inherit;
+  white-space: normal; }
+
+.ui-li-static > div.clearfix {
+  margin-bottom: .25em; }
+
+#two .btn-success, #two .btn-danger, #two .btn-brand {
+  font-size: .9em;
+  width: 7em;
+  margin: 0em !important; }
+
+#two .cf-table {
+  background-color: #f2f2f2;
+  padding: 1em 0em; }
+  #two .cf-table .ui-btn-inline {
+    display: inline-block; }
+
+.cf-updated {
+  position: relative;
+  padding-right: 1.2rem; }
+  .cf-updated:after {
+    content: '新';
+    color: #F0581B;
+    position: absolute;
+    right: 0; }
+
+#historyDialog .modal-body {
+  padding: 0; }
+
+#historyDialog .head-bar {
+  position: absolute;
+  border-top-left-radius: .3125rem;
+  border-top-right-radius: .3125rem; }
+
+#historyDialog .ui-navbar .ui-btn {
+  color: #787677;
+  border-left: 0;
+  border-right: 0;
+  border-top: 0;
+  border-bottom-color: #ddd; }
+
+#historyDialog .ui-tabs-panel {
+  margin-top: 42px; }
+  #historyDialog .ui-tabs-panel h4 {
+    padding-left: 1rem; }
+
+#historyDialog .table tr.first-line {
+  color: black; }
+
+#historyDialog .table tr td:first-child {
+  padding-left: 1rem; }
+
+#historyDialog .table tr td:last-child {
+  text-align: right;
+  padding-right: 1rem; }
+
+#historyDialog .table tr td:nth-child(2) {
+  word-break: break-all; }
+
+#historyDialog h4 {
+  color: black;
+  background-color: #f2f2f2;
+  margin: 0em;
+  padding-top: .5em;
+  padding-bottom: .5em; }
+
+.tel {
+  display: inline-block !important; }
+
+#collection-details .ui-tabs {
+  padding: 0; }
+
+#collection-details .app-form {
+  margin-top: 38px; }
+
+/*===================================================*/
+/*=================Collection Detail end================*/
+/*===================================================*/
+/*=================Collection Note================*/
+#collection-note-page {
+  padding-bottom: 80px; }
+
+/*===================================================*/
+/*=================Collection Note end================*/
+/*===================================================*/
+/*=================Collection Repair User Info================*/
+#userInfoForm label, #addContactDialog label {
+  display: inline-block;
+  line-height: 34px; }
+
+#userInfoForm input, #addContactDialog input {
+  text-align: right; }
+
+#userInfoForm .form-group, #addContactDialog .form-group {
+  position: relative;
+  margin-bottom: 0em;
+  padding-top: 1em;
+  padding-bottom: 0em;
+  border-bottom: 1px solid #ddd; }
+
+#userInfoForm .control-label, #addContactDialog .control-label {
+  margin-bottom: 0em; }
+
+#userInfoForm .form-control, #addContactDialog .form-control {
+  border: 0px;
+  box-shadow: none;
+  padding: 0em; }
+
+#userInfoForm a, #addContactDialog a {
+  display: inline-block; }
+
+#userInfoForm section, #addContactDialog section {
+  margin-left: -15px;
+  margin-right: -15px; }
+  #userInfoForm section h4, #addContactDialog section h4 {
+    border-bottom: 2px solid #ddd;
+    margin: 0;
+    padding: .5rem 15px; }
+  #userInfoForm section button.ui-btn:active, #userInfoForm section button.ui-btn:focus, #addContactDialog section button.ui-btn:active, #addContactDialog section button.ui-btn:focus {
+    box-shadow: none; }
+
+.doc {
+  background-image: url("../../img/doc.png");
+  width: 25px;
+  height: 25px;
+  display: block;
+  background-repeat: no-repeat;
+  background-size: 2rem;
+  background-position: left center; }
+
+.icon-remove {
+  background-image: url("../../img/remove.png") !important;
+  width: 50px;
+  height: 50px;
+  display: inline-block;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background-repeat: no-repeat !important;
+  background-size: 2.5rem !important;
+  background-color: transparent !important;
+  background-position: right 50% !important; }
+
+#repairUserInfoForm .cf-table > * {
+  text-align: left;
+  vertical-align: middle; }
+  #repairUserInfoForm .cf-table > *:nth-child(2) {
+    margin: 0;
+    border: 0;
+    line-height: 50px;
+    padding: 0 40px 0 0;
+    text-align: right;
+    color: #999;
+    background-image: url("../../img/add.png");
+    background-position: right 50%;
+    background-size: 2.5rem;
+    background-repeat: no-repeat; }
+
+#contacts {
+  background-color: #f2f2f2; }
+  #contacts td {
+    vertical-align: middle;
+    text-align: center;
+    padding-bottom: 0;
+    padding-right: 0;
+    padding-left: 0; }
+    #contacts td:first-child {
+      text-align: left;
+      padding-left: 15px; }
+    #contacts td:last-child {
+      padding-right: 15px;
+      text-align: right; }
+
+/*===================================================*/
+/*=================Collection Repair User Info end================*/
+#letter {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  position: absolute; }
+
+/*# sourceMappingURL=../maps/application/collection.css.map */

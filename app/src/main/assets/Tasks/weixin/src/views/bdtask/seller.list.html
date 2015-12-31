@@ -1,0 +1,41 @@
+<!-- POS & S1 list -->
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-xs-12">
+			<h3 class="head-bar ">我的Seller列表</h3>
+			<div class="app-form">
+				<div class="panel-list">
+					<div ng-if="isEmpty" class="alert alert-warning">尚无Seller信息<br><small>点击上面的【创建Seller】按钮，可添加新的Seller</small></div>
+					<div ng-repeat="item in list" class="panel panel-default">
+						<div class="panel-heading" ng-class="{'panel-info': item.status!==0}">
+							<div class="panel--title"><a href="#/seller/?id={{item.id}}&status={{item.status}}">{{item.name}}</a></div>
+						</div>
+						<div class="panel-body">
+							<div class="btn-list">
+								<a ng-if="item.s3!==null" href="#/s3/?pid={{item.id}}&pname={{item.name}}&id={{item.s3.id}}" ng-class="{'alert-info': item.s3.status!==0}" class="btn btn-default btn-col-12">S3 {{item.s3.name}}</a>
+								<a ng-if="item.s3===null" href="#/s3/?pid={{item.id}}&pname={{item.name}}" class="btn btn-brand btn-col-12">创建S3</a>
+								
+								<div class="panel panel-default">
+									<div class="panel-heading">
+										下属POS列表
+									</div>
+									<div class="panel-body">
+										<a ng-repeat="subItem in item.posList" ng-class="{'alert-info':subItem.status!==0}" class="btn btn-default btn-col-12" href="#pos/?id={{subItem.id}}&status={{subItem.status}}" onclick="alert('暂时无法查看POS详情');return false;" role="button">{{subItem.name}} <span class="badge">{{subItem.s1Count}}</span></a>
+									</div>
+									
+
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+            </div>
+			<foot class="footer-bar">
+            <a href="#/seller/" class="btn btn-brand btn-block btn-create">
+            创建Seller
+            </a>
+			</foot>
+        </div>
+    </div>
+</div>
+<!-- /POS & S1 list -->

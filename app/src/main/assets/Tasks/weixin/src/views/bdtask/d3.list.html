@@ -1,0 +1,29 @@
+<!-- POS & S1 list -->
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-xs-12">
+			<h3 class="head-bar">我的D3列表</h3>
+			<div class="app-form">
+				<div class="panel-list">
+					<div ng-if="isEmpty" class="alert alert-warning">尚无D3信息<br><small>点击上面的【创建D3】按钮，可添加新的D3</small></div>
+					<div ng-repeat="item in list" class="panel panel-default">
+						<div class="panel-heading" ng-class="{'panel-info': item.status!==0}">
+							<div class="panel--title"><a href="#/d3/?id={{item.id}}&status={{item.status}}">D3 {{item.name}}</a></div>
+						</div>
+						<div class="panel-body">
+							<div class="btn-list">
+								<a ng-repeat="subItem in item.children" ng-class="{'alert-info':subItem.status!==0}" class="btn btn-default btn-col-6" href="#d2list/?d3name={{item.name}}&d2id={{subItem.id}}&d2name={{subItem.name}}&d2status={{subItem.status}}" role="button">{{subItem.name}} <span class="badge">{{subItem.children}}</span></a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<footer class="footer-bar">
+				<a href="#/d3/" class="btn btn-brand btn-block btn-lg btn-create">
+				创建D3
+				</a>
+			</footer>
+        </div>
+    </div>
+</div>
+<!-- /POS & S1 list -->

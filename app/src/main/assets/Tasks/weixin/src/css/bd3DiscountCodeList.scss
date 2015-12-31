@@ -1,0 +1,14 @@
+
+.table {
+	background-color:#fff;
+	table-layout:fixed;
+	td {
+		padding:0em !important;
+	}
+	a {
+		display:block;
+		padding:.25em;
+		word-wrap: break-word;
+		white-space: pre-wrap;
+	}
+}

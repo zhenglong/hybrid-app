@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="zh" ng-app="CollectionApp">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="format-detection" content="email=no">
+	<title>{{title}}</title>
+    <!-- inject:lib:css -->
+    <link rel="stylesheet" href="../../../FE.lib/bootstrap/3.3.4/css/bootstrap.css">
+    <link rel="stylesheet" href="../../../FE.lib/font-awesome/4.4.0/css/font-awesome.css">
+    <link rel="stylesheet" href="../../../FE.lib/bootstrap/plugins/timepicker/css/bootstrap-timepicker.css">
+    <link rel="stylesheet" href="../../../FE.lib/jquery/plugins/jstree/dist/themes/proton/style.css">
+    <link rel="stylesheet" href="../css/common/app.css">
+    <!-- endinject -->
+    <!-- inject:page:css -->
+    <!-- endinject -->
+</head>
+<body >
+	<div data-role="page" id="withdraw" data-title="提现">
+		<div role="main" class="ui-content" id="container">
+			<label>如果您的银行卡信息不正确，请拨打客服电话：400-655-1250</label>
+			<br/>
+			<form id="form_RegisterMerchantUser">
+				<div class="ui-grid-a" style="color:red">
+					<div class="ui-block-a">
+						<label>可提现额度(元)</label>
+					</div>
+					<div class="ui-block-b">
+						<span>{{model.Amount}}</span>
+					</div>
+				</div>
+				<div class="ui-grid-a" style="color:red">
+					<div class="ui-block-a">
+						<label>正在提现金额(元)</label>
+					</div>
+					<div class="ui-block-b">
+						<span>{{model.WithDrawingAmount}}</span>
+					</div>
+				</div>
+				<div class="ui-grid-a">
+					<div class="ui-block-a">
+						<label>开户行名称</label>
+					</div>
+					<div class="ui-block-b">
+						<span>{{model.BankName}}</span>
+					</div>
+				</div>
+				 <div class="ui-grid-a">
+					<div class="ui-block-a">
+						<label>银行卡姓名</label>
+					</div>
+					<div class="ui-block-b">
+						<span>{{model.BankAccountName}}</span>
+					</div>
+				</div>
+				 <div class="ui-grid-a">
+					<div class="ui-block-a">
+						<label>银行卡账号(后4位)</label>
+					</div>
+					<div class="ui-block-b">
+						<span>{{model.BankAccount}}</span>
+					</div>
+				</div>
+				 <div class="ui-grid-a">
+					<div class="ui-block-a withdraw-amount">
+						<label for="WithDrawAmount">提现金额(元)</label>
+					</div>
+					<div class="ui-block-b">
+						<input type="number" id="WithDrawAmount" name="WithDrawAmount" ng-model="model.WithDrawAmount" placeholder="请输入提款金额" ng-pattern="^\d+(\.\d*)?$" />
+					</div>
+				</div>
+				<button id="register_submit" class="ui-btn ui-shadow ui-corner-all ui-btn-b" ng-click="onWithdraw()">提现</button>
+			</form>
+		</div>
+	</div>
+	<!-- directive:loading-modal -->
+	<!-- directive:common-modal -->
+    <script type="text/javascript" src="//res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+    <!-- inject:lib:js -->
+    <script src="../../../FE.lib/jquery/1.11.1/jquery.min.js"></script>
+    <script src="../../../FE.lib/bootstrap/3.3.4/js/bootstrap.js"></script>
+    <script src="../../../FE.lib/bootstrap/plugins/timepicker/js/bootstrap-timepicker.js"></script>
+    <script src="../../../FE.lib/angular/1.3.9/angular.min.js"></script>
+    <script src="../../../FE.lib/angular/1.3.9/angular-route.min.js"></script>
+    <script src="../../../FE.lib/angular/1.3.9/angular-touch.min.js"></script>
+    <script src="../../../FE.lib/angular/1.3.9/angular-sanitize.min.js"></script>
+    <script src="../../../FE.lib/angular/1.3.9/angular-cookies.min.js"></script>
+    <script src="../../../FE.lib/angular/plugins/w5c-validator/w5cValidator.js"></script>
+    <script src="../../../FE.lib/jquery/plugins/jstree/dist/jstree.min.js"></script>
+    <script src="../../../FE.lib/hammer.min.js"></script>
+    <script src="../../../FE.lib/iscroll.js"></script>
+    <script src="../js/common/app.js"></script>
+    <!-- endinject -->
+    <!-- inject:page:js -->
+    <script src="../js/application/withdraw.js"></script>
+    <!-- endinject -->
+</body>
+</html>

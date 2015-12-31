@@ -1,0 +1,19 @@
+<div cf-page id="Report" active="true">
+	<h3 class="head-bar">警报原因</h3>
+	<div class="app-form">
+		<form id="input-report-form">
+			<section class="alert-reason">
+				<div class="alert-categories clearfix">
+					<span ng-click="onToggleCategory(alert, $event)" ng-class="{'bg-info':currentCategory == alert}" ng-repeat="alert in alertCategories">{{alert.name}}</span>
+				</div>
+				<h3>其它</h3>
+				<textarea ng-model="alertComment"></textarea>
+			</section>
+		</form>
+	</div>
+	<footer class="footer-bar">
+		<button id="report-form" type="submit" ng-click="onReport()" class="ui-btn btn btn-brand">
+			提交
+		</button>
+	</footer>
+</div>

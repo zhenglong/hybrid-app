@@ -1,0 +1,43 @@
+.product-list {
+  margin-bottom: 2em; }
+  .product-list .radio {
+    margin: .25em 0em; }
+  .product-list label {
+    display: block;
+    padding-top: .5em;
+    padding-bottom: .5em;
+    letter-spacing: .25em;
+    text-indent: 2em;
+    position: relative; }
+    .product-list label input[type="radio"] {
+      display: none; }
+    .product-list label:after {
+      content: "";
+      width: 1em;
+      height: 1em;
+      border: .25em solid #ddd;
+      border-radius: 100%;
+      position: absolute;
+      left: 1em;
+      top: 50%;
+      margin-top: -.5em; }
+    .product-list label.checked:after {
+      content: "";
+      width: 1em;
+      height: 1em;
+      border: 0.25em solid #cb3512;
+      border-radius: 100%;
+      position: absolute;
+      left: 1em;
+      top: 50%;
+      margin-top: -.5em; }
+
+.align-center {
+  text-align: center; }
+
+.radio {
+  font-size: 1.25em;
+  border: 1px solid #ddd;
+  border-radius: .3125em; }
+
+/*# sourceMappingURL=maps/d1qrcode.css.map */

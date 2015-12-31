@@ -1,0 +1,59 @@
+{
+	"status":0,
+	"msg": "",
+	"data": [
+			{
+				"dName": "张三",
+				"dUserId": "afi-1",
+				"dAffiliateId": "af-1",
+				"totalCounts": [20, 0, 0]
+			},{
+				"dName": "李四",
+				"dUserId": "afi-2",
+				"dAffiliateId": "af-2",
+				"totalCounts": [3, 1, 5]
+			},{
+				"dName": "王五",
+				"dUserId": "afi-3",
+				"dAffiliateId": "af-3",
+				"totalCounts": [4, 2, 2]
+			},
+			{
+				"dName": "张三",
+				"dUserId": "afi-1",
+				"dAffiliateId": "af-1",
+				"totalCounts": [20, 0, 0]
+			},{
+				"dName": "李四",
+				"dUserId": "afi-2",
+				"dAffiliateId": "af-2",
+				"totalCounts": [3, 1, 5]
+			},{
+				"dName": "王五",
+				"dUserId": "afi-3",
+				"dAffiliateId": "af-3",
+				"totalCounts": [4, 2, 2]
+			},{
+				"dName": "李四",
+				"dUserId": "afi-2",
+				"dAffiliateId": "af-2",
+				"totalCounts": [3, 1, 5]
+			},{
+				"dName": "王五",
+				"dUserId": "afi-3",
+				"dAffiliateId": "af-3",
+				"totalCounts": [4, 2, 2]
+			},
+			{
+				"dName": "张三",
+				"dUserId": "afi-1",
+				"dAffiliateId": "af-1",
+				"totalCounts": [20, 0, 0]
+			},{
+				"dName": "李四",
+				"dUserId": "afi-2",
+				"dAffiliateId": "af-2",
+				"totalCounts": [3, 1, 5]
+			}
+		]
+}

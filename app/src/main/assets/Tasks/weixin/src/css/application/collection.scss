@@ -1,0 +1,402 @@
+@import "../common/sass-css3-mixins/css3-mixins.scss";
+
+$brand-base: #e5bc00;
+$brand-lighter: lighten($brand-base, 10%);
+$brand-darker: darken($brand-base, 8%);
+$textColor: #787677;
+$fontSizeBase:12.8; // for iphone 4
+$factor: 375/320; // factor for iphone 6+
+$pillsBgColor:#f2f2f2;
+$panelBorderColor:#ddd;
+$textAccentColor:#964D2A;
+$dangerColor:#F0581B;
+$iconColor:#aaa;
+$winWidth:320;
+
+/*===================================================*/
+/*=================Collections================*/
+#collections-head {
+	background-color:white;
+	padding-bottom:0em;
+	&>p {
+		color:$textColor;
+	}
+	.ui-btn {
+		color: $textColor;
+		border-color:#ddd;
+		text-shadow:none;
+		&.ui-btn-active {
+			color:white;
+		}
+	}
+}
+#collections-form {
+	margin-top:(119.47/$fontSizeBase)+rem;
+	.ui-btn {
+		font-size:1rem;
+		font-weight:normal;
+
+		@media screen and (min-device-width:375px)
+			and (max-device-width:776px)
+			and (-webkit-min-device-pixel-ratio:2) {
+			font-size:$factor + rem;
+		}
+	}
+	
+	@media screen and (min-device-width:375px)
+		and (max-device-width:776px)
+		and (-webkit-min-device-pixel-ratio:2) {
+		margin-top:(119.47*$factor/$fontSizeBase)+rem;
+	}
+}
+.table {
+	margin-bottom:0em;
+	padding:0em;
+	&>tbody>tr>td {
+		border-top:0em;
+		vertical-align:middle;
+		padding-left:0;
+		padding-right:0;
+		&:first-child {
+			width:7.5rem;
+		}
+	}
+}
+.table.set-last-width>tbody>tr>td:last-child {
+	width:((1000*$fontSizeBase)/$winWidth)+%;
+	@media screen and (min-device-width:375px)
+		and (max-device-width:776px)
+		and (-webkit-min-device-pixel-ratio:2){
+		width:((1000*$fontSizeBase*$factor)/$winWidth)+%;
+	}
+}
+.glyphicon.glyphicon-option-horizontal {
+	padding:1em 0em 1em 2em;
+}
+.ui-page-theme-a a,.ui-page-theme-a a:visited {
+	color:$textColor;
+	display:block;
+}
+$listViewBorderColor:#ddd;
+$titleColor:darken($listViewBorderColor,40%);
+.ui-listview {
+	border:1px solid $listViewBorderColor;
+	border-bottom:0em;
+}
+.ui-listview li.ui-li-static {
+	border:0em;
+	border-radius:0em;
+}
+.ui-listview > li.ui-last-child > a.ui-btn,.ui-listview > li.ui-first-child > a.ui-btn{
+	@include border-radius(0em);
+	border:0em;
+}
+.ui-listview > li:nth-child(n+2) > a.ui-btn,.ui-listview > li.ui-li-static:nth-child(n+2) {
+	border-top:1px solid $listViewBorderColor;
+}
+.ui-listview > li:first-child > a.ui-btn, .ui-listview > li.ui-li-static:first-child {
+	-webkit-border-top-left-radius:.3125em;
+	-webkit-border-top-right-radius:.3125em;
+	border-top-left-radius:.3125em;
+	border-top-right-radius:.3125em;
+}
+.ui-listview > li:last-child > a.ui-btn, .ui-listview > li.ui-li-static:last-child {
+	-webkit-border-bottom-left-radius:.3125em;
+	-webkit-border-bottom-right-radius:.3125em;
+	border-bottom-left-radius:.3125em;
+	border-bottom-right-radius:.3125em;
+}
+.pills {
+	padding:0em;
+	margin:0em;
+	background-color:$pillsBgColor;
+	list-style-type:none;
+	&:after {
+		content: "";
+		display:block;
+		width:0em;
+		height:0em;
+		clear:both;
+	}
+	& > li {
+		float:left;
+		font-size:(11.947 / $fontSizeBase)+rem;
+		
+		@media screen and (min-device-width:375px) 
+			and (max-device-width:775px)
+			and (-webkit-min-device-pixel-ratio:2){
+			font-size:(11.947*$factor / $fontSizeBase)+rem;
+		}
+		color:$textColor;
+		width:(100/3) + %;
+		a {
+			text-decoration:none;
+			display:block;
+			line-height:(34.56 / $fontSizeBase)+rem;
+			@media screen and (min-device-width:375px) 
+				and (max-device-width:775px)
+				and (-webkit-min-device-pixel-ratio:2){
+				line-height:(34.56*$factor / $fontSizeBase)+rem;
+			}
+			color:$textColor;
+			text-shadow:none;
+			border-bottom:1px inset $panelBorderColor;
+			padding-bottom:2px;
+			&.ui-btn-active {
+				color:$textAccentColor;
+				padding-bottom:0px;
+				border-bottom:3px inset $textAccentColor;
+			}
+		}
+	}
+}
+.ui-listview > .content-placeholder {
+	text-align:center;
+	font-size:2rem;
+	line-height:4rem;
+}
+.glyphicon.glyphicon-chevron-right {
+	color:$iconColor;
+}
+/*===================================================*/
+/*=================Collections end================*/
+/*===================================================*/
+/*=================Collection Detail================*/
+	.head-bar.ui-navbar {
+		background-color:transparent;
+		padding:0em;
+	}
+	.data-title {
+		color:$titleColor;
+		font-size:0.85em;
+	}
+	.data-content {
+		white-space:normal;
+		word-wrap:break-word;
+		max-width:50%;
+		text-align:right;
+	}
+    #input-record {
+        margin: 0em auto;
+        width: 96%;
+        height: 200px !important;
+    }
+    #input-withdraw {
+        margin: 0em auto;
+        width: 96%;
+        height: 200px !important;
+    }
+	#two .app-form {
+		margin-top: 39px;
+	}
+	.ui-listview>li p {
+		text-overflow:inherit;
+		overflow:inherit;
+		white-space:normal;
+	}
+	.ui-li-static > div.clearfix {
+		margin-bottom:.25em;
+	}
+	#two {
+		.btn-success,.btn-danger,.btn-brand {
+			font-size:.9em;
+			width:7em;
+			margin:0em !important;
+		}
+		.cf-table {
+			background-color:$pillsBgColor;
+			padding:1em 0em;
+			.ui-btn-inline {
+				display:inline-block;
+			}
+		}
+	}
+	.cf-updated {
+		position:relative;
+		padding-right:1.2rem;
+		&:after {
+			content: '新';
+			color:$dangerColor;
+			position:absolute;
+			right:0;
+		}
+	}
+	#historyDialog {
+		.modal-body {
+			padding:0;
+		}
+		.head-bar {
+			position:absolute;
+			border-top-left-radius:.3125rem;
+			border-top-right-radius:.3125rem;
+		}
+		.ui-navbar {
+			.ui-btn {
+				color:$textColor;
+				border-left:0;
+				border-right:0;
+				border-top:0;
+				border-bottom-color:$panelBorderColor;
+			}
+		}
+		.ui-tabs-panel {
+			margin-top:42px;
+			h4 {
+				padding-left:1rem;
+			}
+		}
+		.table {
+			tr {
+				&.first-line {
+					color:black;
+				}
+				td {
+					&:first-child {
+						padding-left:1rem;
+					}
+					&:last-child {
+						text-align:right;
+						padding-right:1rem;
+					}
+					&:nth-child(2) {
+						word-break:break-all;
+					}
+				}
+			}
+		}
+		h4 {
+			color:black;
+			background-color: $pillsBgColor;
+			margin:0em;
+			padding-top:.5em;
+			padding-bottom:.5em;
+		}
+	}
+	.tel {
+		display:inline-block !important;
+	}
+	#collection-details {
+		.ui-tabs {
+			padding:0;
+		}
+		.app-form {
+			margin-top:38px;
+		}
+	}
+/*===================================================*/
+/*=================Collection Detail end================*/
+/*===================================================*/
+/*=================Collection Note================*/
+#collection-note-page {
+	padding-bottom:80px;
+}
+/*===================================================*/
+/*=================Collection Note end================*/
+/*===================================================*/
+/*=================Collection Repair User Info================*/
+#userInfoForm,#addContactDialog {
+	label {
+		display:inline-block;
+		line-height:34px;
+	}
+	input {
+		text-align:right;
+	}
+	.form-group {
+		position:relative;
+		margin-bottom:0em;
+		padding-top:1em;
+		padding-bottom:0em;
+		border-bottom:1px solid $panelBorderColor;
+	}
+	.control-label {
+		margin-bottom:0em;
+	}
+	.form-control {
+		border:0px;
+		box-shadow:none;
+		padding:0em;
+	}
+	a {
+		display:inline-block;
+	}
+	section {
+		margin-left:-15px;
+		margin-right:-15px;
+		h4 {
+			border-bottom:2px solid $panelBorderColor;
+			margin:0;
+			padding:.5rem 15px;
+		}
+		button.ui-btn:active,button.ui-btn:focus {
+			box-shadow:none;
+		}
+	}
+}
+.doc {
+	background-image: url('../../img/doc.png');
+	width:25px;
+	height:25px;
+	display:block;
+	background-repeat:no-repeat;
+	background-size:2rem;
+	background-position:left center;
+}
+.icon-remove {
+	background-image: url('../../img/remove.png') !important;
+	width: 50px;
+	height:50px;
+	display:inline-block;
+	margin:0;
+	padding:0;
+	border:0;
+	background-repeat:no-repeat !important;
+	background-size: 2.5rem !important;
+	background-color:transparent !important;
+	background-position:right 50% !important;
+}
+#repairUserInfoForm .cf-table {
+	&>* {
+		text-align:left;
+		vertical-align:middle;
+		&:nth-child(2) {
+			margin:0;
+			border:0;
+			line-height:50px;
+			padding:0 40px 0 0;
+			text-align:right;
+			color:#999;
+			background-image: url('../../img/add.png');
+			background-position:right 50%;
+			background-size:2.5rem;
+			background-repeat:no-repeat;
+		}
+	}
+}
+#contacts {
+	background-color: $pillsBgColor;
+	td {
+		vertical-align:middle;
+		text-align:center;
+		padding-bottom:0;
+		padding-right:0;
+		padding-left:0;
+		&:first-child {
+			text-align:left;
+			padding-left:15px;
+		}
+		&:last-child {
+			padding-right:15px;
+			text-align:right;
+		}
+	}
+}
+/*===================================================*/
+/*=================Collection Repair User Info end================*/
+
+#letter {
+	width:100%;
+	height:100%;
+	border:0;
+	position:absolute;
+}

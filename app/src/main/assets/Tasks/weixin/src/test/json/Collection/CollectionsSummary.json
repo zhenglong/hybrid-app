@@ -1,0 +1,10 @@
+{
+	"status":0,
+	"msg": "",
+	"data": {
+		"totalCount": 20,
+		"collectedCount": 3,
+		"forTodayCount": 2,
+		"withdrawedCount": 15
+	}
+}

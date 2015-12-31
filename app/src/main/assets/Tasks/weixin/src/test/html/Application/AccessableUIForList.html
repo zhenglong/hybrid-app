@@ -1,0 +1,32 @@
+<div>
+    <a class="snippet1 pull-right sign-btn clickable" class="survey-check-btn request-with-cid-appid" ng-href="surveyCheck.html#?id={{app.Id}}">{{app.hasD1Check ? '已签单':'请签单'}}</a>
+    <i ng-if="(app.isAffiliateOperationTriggered == 1) && (app.status != ApplicationStatus.Completed)" class="snippet2 fa fa-minus-circle rejected"></i>
+    <span ng-if="(app.isAffeliateOperationTriggered == 1) && (app.status == ApplicationStatus.Completed)" class="snippet3 instalment_status completed " style="color:red">报警失败</span>
+    <a ng-if="!app.instalmentOperation" href="#item_details" ng-click="onShowItemDetails($event, app)" data-toggle="modal" class="pull-right snippet4">
+        <i class="glyphicon glyphicon-option-horizontal text-brand clickable"></i>
+    </a>
+    <div ng-if="!!app.instalmentOperation" class="clearfix snippet5">
+        <span class="instalment_operation text-brand">{{app.instalmentOperation}}</span>
+        <a href="#item_details" data-toggle="modal"  ng-click="onShowItemDetails($event, app)" class="pull-right">
+            <i class="glyphicon glyphicon-option-horizontal text-brand clickable"></i>
+        </a>
+    </div>
+    <div class="instalment_action snippet6">
+        <span class="instalment_operation text-brand"></span>
+    </div>
+    <div class="line snippet7">
+        <div class="half-line align-center">
+            <div class="description" id="recommend_text" ng-if="currenApp.isRecommendTriggered">
+                <i class="fa fa-thumbs-o-up"></i>
+                推荐已上报！
+            </div>
+            <a href="#Recommend" data-dismiss="modal" data-toggle="modal"  class="ui-btn btn btn-success" ng-if="!currentApp.isRecommendTriggered&&currentApp.canReport">&nbsp;我要推荐&nbsp;&nbsp;</a>
+        </div>
+        <div class="half-line align-center" >
+            <div class="description" id="reported_text" ng-if="currentApp.isAffiliateOperationTriggered">
+                警报已拉响！
+            </div>
+            <a href="#" ng-click="onAlert($event)" class="ui-btn btn btn-brand" ng-if="currentApp.canReport && !currentApp.isAffiliateOperationTriggered">拉警报！ 慎！</a>
+        </div>
+    </div>
+</div>

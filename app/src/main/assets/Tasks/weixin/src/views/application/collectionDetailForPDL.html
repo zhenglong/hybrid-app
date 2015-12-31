@@ -1,0 +1,193 @@
+<div data-role="page" id="collection-details" >
+    <div data-role="tabs" id="tabs">
+        <div data-role="navbar">
+            <ul>
+                <li><a href="#one" data-ajax="false">用户详情</a></li>
+                <li><a href="#two" data-ajax="false">催收记录</a></li>
+            </ul>
+        </div>
+        <div id="one" class="ui-body-d ui-content">
+            <ul data-role="listview" data-inset="true">
+                <li>
+					<div class="clearfix">
+						<div><font color="blue">{{item.endUser.IdName}}</font></div>
+						<div><a href="tel:{{item.endUser.Mobile}"><font color="blue">{{item.endUser.Mobile}}</font></a></div>
+					</div>
+                </li>
+                <li data-role="list-divider">还款信息</li>
+                <li>
+					<div class="clearfix">
+						<div>今日应还</div>
+						<div>{{item.TodayPay}}</div>
+					</div>
+					<div class="clearfix">
+						<div class="pull-left">
+							本金 {{item.installmentInfo.Principal}} 元
+						</div>
+						<div class="pull-right">
+							本息服务费共 <br />{{ item.installmentInfo.MonthlyPay }} 元
+						</div>
+					</div>
+					<div class="clearfix">
+						<div class="pull-left">借款日</div>
+						<div class="pull-right">{{item.installmentInfo.MoneyTransferredOn.Value.ToShortDateString()}}</div>
+					</div>
+					<div class="clearfix">
+						<div class="pull-left">还款截止日</div>
+						<div class="pull-right">{{item.installmentInfo.FirstDueDate.Value.ToShortDateString()}}</div>
+					</div>
+					<div class="clearfix">
+						<!-- TODO @Html.DisplayNameFor(model => model.WithholdingInfo.ReturnMessage)-->
+						<div class="pull-left"></div>
+						<div class="pull-right">{{item.WithholdingInfo.ReturnMessage}}</div>
+					</div>
+
+					<div class="clearfix" ng-if="!!item.WithholdingInfo.RequestTime">
+						<!-- TODO @Html.DisplayNameFor(model => model.WithholdingInfo.RequestTime) -->
+						<div class="pull-left"></div>
+						<div class="pull-right">
+							{{item.WithholdingInfo.RequestTime}}
+						</div>
+					</div>
+					<div class="clearfix">
+						<div class="pull-left">item.installmentInfo.ProductName</div>
+						<div class="pull-right" ng-if="!!item.installmentInfo.MerchantStore">item.installmentInfo.MerchantStore.Name </div>
+					</div>
+					<div class="clearfix" ng-if="!!item.PayInfo">
+						<div class="pull-left">{{item.PayInfo.BankName}}</div>
+						<div class="pull-right">{{item.PayInfo.BankAccount}}</div>
+					</div>
+                </li>
+                <li data-role="list-divider">个人信息</li>
+                <li>
+					<div class="clearfix">
+						<div class="pull-left">身份证</div>
+						<div class="pull-right">{{item.endUser.IdNumber}}</div>
+					</div>
+					<div class="clearfix">
+						<div class="pull-left">微信名</div>
+						<div class="pull-right">{{item.endUser.WeiXinUser.NickName}}</div>
+					</div>
+					<div class="clearfix">
+						<div class="pull-left">QQ号</div>
+						<div class="pull-right">{{item.personanInfo.QQ}}</div>
+					</div>
+					<div class="clearfix">
+						<div class="pull-left">现在住址</div>
+						<div class="pull-right">{{item.personanInfo.LivingAddress}}</div>
+					</div>
+                </li>
+                <li data-role="list-divider">联系人信息</li>
+                <li>
+					<div class="clearfix" ng-repeat="contract in item.ContactInfo">
+						<div class="pull-left">{{contact.Relationship.Description + ' ' + contact.Name}}</div>
+						<div class="pull-right"><a ng-href="{{'tel:' + contact.Mobile}}"><font color="blue">{{contact.Mobile}}</font></a></div>
+					</div>
+                </li>
+                <li data-role="list-divider">工作信息</li>
+                <li>
+					<div class="clearfix">
+						<div class="pull-left">公司</div>
+						<div class="pull-right">{{item.JobInfo.CompanyNamei}}</div>
+					</div>
+					<div class="clearfix">
+						<div class="pull-left">月薪</div>
+						<div class="pull-right">{{item.JobInfo.MonthlyIncome}}</div>
+					</div>
+					<div class="clearfix">
+						<div class="pull-left">发薪日</div>
+						<div class="pull-right">{{'每月 ' + item.JobInfo.Payday + ' 日''}}</div>
+					</div>
+					<div class="clearfix">
+						<div class="pull-left">公司电话</div>
+						<div class="pull-right">
+							<a ng-href="{{'tel:' + item.JobInfo.CompanyPhone}}"><font color="blue">{{item.JobInfo.CompanyPhone}}</font></a>
+						</div>
+					</div>
+					<div class="clearfix">
+						<div class="pull-left">公司地址</div>
+						<div class="pull-right">{{item.JobInfo.CompanyAddress}}</div>
+					</div>
+                </li>
+            </ul>
+        </div>
+        <div id="two">
+            <ul data-role="listview" data-inset="true">
+                <li>
+                    <div class="ui-grid-a">
+                        <div class="ui-block-a">
+                            <a href="#Record" class="ui-btn ui-shadow ui-corner-all"  id="record-button" style="background-color:green">
+                                <font color="white">
+                                    记录
+                                </font>
+                            </a>
+                        </div>
+						<div class="ui-block-b"><a ng-href="{{item.isWithdraw ? '#' : '#Withdraw'}}" type="button"  class="ui-btn ui-shadow ui-corner-all" ng-style="{{'background-color':item.isWithdraw ? 'gray' : 'red'}}" id="withdraw-button"><font color="white">退案</font></a></div>
+                    </div>
+                </li>
+                <li>
+					<div ng-repeat="collectionDetail in item.CollectionRecord">
+						<div class="clearfix">
+							<div class="pull-left">{{collectionDetail.Date}}</div>
+						</div>
+						<div>{{collectionDetail.Content}}</div>
+					</div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div data-role="page" id="Record">
+    <div data-role="tabs" id="tabs">
+        <div data-role="navbar">
+            <ul>
+                <li><span class="ui-link ui-btn ui-tabs-anchor ui-btn-active">催收记录</span></li>
+            </ul>
+        </div>
+        <div class="ui-body-d ui-content">
+            <ul data-role="listview" data-inset="true">
+                <li>
+                </li>
+                <li>
+                    <form id="input-record-form" class="form-horizontal">
+                        <textarea name="Record" id="input-record" class="form-control" placeholder="填写完催收信息后才能提交" style="height: 140px;" ng-model="collectionComment"></textarea>
+                    </form>
+                </li>
+                <li>
+                    <div class="ui-body-d ui-content">
+                        <button id="record-form" type="button" ng-disabled="!collectionComment" ng-click="onSubmitCollection()" class="ui-btn ui-shadow ui-corner-all" style="background-color:green">
+                            <font color="white">提交</font>
+                        </button>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div data-role="page" id="Withdraw">
+    <div data-role="tabs" id="tabs">
+        <div data-role="navbar">
+            <ul>
+                <li><span class="ui-link ui-btn ui-tabs-anchor ui-btn-active">退案说明</span></li>
+            </ul>
+        </div>
+        <div class="ui-body-d ui-content">
+            <ul data-role="listview" data-inset="true">
+                <li>
+                </li>
+                <li>
+                    <form id="input-withdraw-form" class="form-horizontal">
+                        <textarea name="Withdraw" id="input-withdraw" placeholder="填写完退案说明后才能提交" ng-model="withdrawComment" class="form-control" style="height: 140px;"></textarea>
+                    </form>
+                </li>
+                <li>
+                    <div class="ui-body-d ui-content">
+                        <button id="withdraw-form" type="submit" ng-disabled="!withdrawComment" ng-click="onSubmitWithdraw()" class="ui-btn ui-shadow ui-corner-all" style="background-color:green">
+                            <font color="white">提交</font>
+                        </button>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

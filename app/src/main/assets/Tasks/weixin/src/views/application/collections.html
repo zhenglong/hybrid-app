@@ -1,0 +1,58 @@
+<h3 class="head-bar" id="collections-head">
+	<p>{{title}}</p>
+	<div cf-navbar>
+		<ul>
+			<li>
+			<a href="#" ng-click="onDisplay($event, 'overdueStatus', OverdueStatus.first)" ng-class="{'ui-btn-active' : overdueStatus == OverdueStatus.first}">首逾</a>
+			</li>
+			<li>
+				<a href="#" ng-click="onDisplay($event, 'overdueStatus', OverdueStatus.second)" ng-class="{'ui-btn-active' : overdueStatus == OverdueStatus.second}">二逾</a>
+			</li>
+			<li>
+				<a href="#" ng-click="onDisplay($event, 'overdueStatus', OverdueStatus.third)" ng-class="{'ui-btn-active' : overdueStatus == OverdueStatus.third}">三逾</a>
+			</li>
+		</ul>
+	</div>
+	<ul class="pills">
+		<li>
+		<a href="#" ng-click="onDisplay($event, 'collectionStatus', CollectionStatus.new)" ng-class="{'ui-btn-active': collectionStatus == CollectionStatus.new}">催收中 {{lists[CollectionStatus.new].count}}</a>
+		</li>
+		<li>
+			<a href="#" ng-click="onDisplay($event, 'collectionStatus', CollectionStatus.collected)" ng-class="{'ui-btn-active': collectionStatus == CollectionStatus.collected}">已催回 {{lists[CollectionStatus.collected].count}}</a>
+		</li>
+		<li>
+			<a href="#" ng-click="onDisplay($event, 'collectionStatus', CollectionStatus.withdrawed)" ng-class="{'ui-btn-active': collectionStatus == CollectionStatus.withdrawed}">已退案 {{lists[CollectionStatus.withdrawed].count}}</a>
+		</li>
+	</ul>
+</h3>
+<div class="app-form" id="collections-form">
+	<div cf-page id="myaccount" data-title="{{title}}" data-active="true">
+		<ul cf-listview data-inset="true" id="collection-list">
+			<li ng-if="list != null && !list.length" class="content-placeholder line-wrap" ng-bind-html="emptyWords">
+			</li>
+			<li ng-repeat="item in list" ng-if="(list != null) && !!list.length" ng-attr-id="{{'item_' + item.collectionId}}">
+				<a ng-href="{{'#/app/{0}/collection/{1}/?collectionStatus={2}'.format(item.appId, item.collectionId, collectionStatus)}}" class="ui-btn">
+				<table class="table set-last-width">
+					<tr>
+						<td>{{($parent.collectionStatus != $parent.CollectionStatus.collected) ? ('M'+(item.mNth || 0)+'-' + $parent.overdueStatusText + item.fdpd) : '催'+item.collectionTimes+'次 '}} 
+						</td>
+						<td>{{$parent.collectionStatus != $parent.CollectionStatus.collected? ('催' + item.collectionTimes + '次') : ''}}<span ng-if="($parent.collectionStatus == $parent.CollectionStatus.new) && item.states && item.states.length && (item.states[0].state == CollectionState.all)" ng-class="{'text-danger': item.states[0].warnLevel < 90, 'text-warn': (item.states[0].warnLevel >= 90) && (item.states[0].warnLevel < 100), 'text-success': item.states[0].warnLevel >= 100 }">&nbsp;全</span>
+						</td>
+						<td class='align-right'>
+							<span ng-class="{'text-danger': item.warnLevel < 90, 'text-warn': (item.warnLevel >= 90) && (item.warnLevel < 100), 'text-success': item.warnLevel >= 100 }">{{item.collectionStatus}}</span>
+						</td>
+					</tr>
+					<tr>
+						<td>{{item.idName}}</td>
+						<td>￥{{item.principal}}</td>
+						<td class="text-ellipsis">{{item.itemName}}</td>
+					</tr>
+					<tr>
+						<td colspan="3" class="text-ellipsis">{{item.name}}</td>
+					</tr>
+				</table>
+				</a>
+			</li>
+		</ul>
+	</div>
+</div>

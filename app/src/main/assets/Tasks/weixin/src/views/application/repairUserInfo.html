@@ -1,0 +1,87 @@
+<h3 class="head-bar">
+	信息修复
+</h3>
+<div cf-page data-active="true" class="app-form" id="repairUserInfoForm">
+	<div class="row-fluid">
+		<div class="col-xs-12">
+			<form name="userInfoForm" id="userInfoForm" class="form-horizontal">
+				<div class="form-group" ng-class="{'error': userInfoForm.BankAccount.$invalid}">
+					<label class="control-label col-xs-5" for="BankAccount">银行卡号</label>
+					<div class="col-xs-7">
+						<input type="text" data-role="none" name="BankAccount" class="form-control" placeholder="请如实填写" ng-model="item.bankAccount" />
+					</div>
+				</div>
+				<div class="form-group" ng-class="{'error': userInfoForm.Address.$invalid}">
+					<label class="control-label col-xs-5" for="Address">用户住址</label>
+					<div class="col-xs-7">
+						<input type="text" data-role="none" name="Address" class="form-control" placeholder="请如实填写" data-role="none" ng-model="item.address" />
+					</div>
+				</div>
+				<div class="form-group" ng-class="{'error': userInfoForm.TelNo.$invalid}">
+					<label class="control-label col-xs-5" for="TelNo">用户手机号</label>
+					<div class="col-xs-7">
+						<input type="text" data-role="none" name="TelNo" class="form-control" placeholder="请如实填写" data-role="none" ng-model="item.telNo" />
+					</div>
+				</div>
+				<section>
+					<h4 class="cf-table">
+						<div>第三方联系人信息</div>
+						<button type="button" class="ui-btn" data-toggle="modal" data-target="#addContactDialog">请添加</button>
+					</h4>
+					<table class="table" id="contacts">
+						<tr ng-repeat="contact in item.contacts">
+							<td>{{contact.name}}</td>
+							<td><a ng-href="tel:{{contact.telNo}}" class="text-brand">{{contact.telNo}}</a></td>
+							<td>{{contact.relationshipText}}</td>
+							<td>
+								<a class="ui-btn icon-remove" ng-click="onRemoveContact(contact)"></a>
+							</td>
+						</tr>
+					</table>
+				</section>
+			</form>
+		</div>
+	</div>
+</div>
+<div class="footer-bar">
+	<button type="button" class="ui-btn btn-brand" ng-click="onRepairUserInfo()">确定</button>
+</div>
+
+<div class="modal fade" tabindex="-1" role="dialog" id="addContactDialog">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h4>第三方联系人信息</h4>
+			</div>
+			<div class="modal-body">
+				<form class="form form-horizontal" name="contactForm" id="contactForm">
+					<div class="form-group" ng-class="{'error': contactForm.ThirdpartyName.$invalid}">
+						<label for="ThirdpartyName" class="control-label col-xs-5">姓名</label>
+						<div class="col-xs-7">
+							<input type="text" name="ThirdpartyName" class="form-control" placeholder="请如实填写" ng-model="contact.name" required />
+						</div>
+					</div>
+					<div class="form-group" ng-class="{'error': contactForm.ThirdpartyTelNo.$invalid}">
+						<label for="TelNo" for="ThirdpartyTelNo" class="control-label col-xs-5">手机号|固话</label>
+						<div class="col-xs-7">
+							<input type="text" name="ThirdpartyTelNo" class="form-control" placeholder="请如实填写"  ng-model="contact.telNo" required />
+						</div>
+					</div>
+					<div class="form-group" ng-class="{'error':contactForm.ThirdpartyRelationship.$invalid}">
+						<label class="control-label col-xs-6" for="ThirdpartyRelationship">和用户的关系</label>
+						<div class="col-xs-6">
+							<select class="form-control" required name="ThirdpartyRelationship" ng-model="contact.relationship" required>
+								<option value="">请选择-&gt;</option>
+								<option ng-repeat="r in relationships" ng-value="r.value">{{r.text}}</option>
+							</select>
+						</div>
+					</div>
+				</form>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+				<button type="submit" class="btn btn-brand" ng-click="onAddContact($event)" form="contactForm">确定</button>
+			</div>
+		</div><!-- content -->
+	</div><!-- dialog -->
+</div>

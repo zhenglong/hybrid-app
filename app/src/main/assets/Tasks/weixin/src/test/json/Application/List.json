@@ -1,0 +1,61 @@
+{
+    "status": 0,
+    "msg": "",
+    "data": [{
+        "id":1,
+        "instalmentOperation":"电子借条",
+        "dateAdded":1450751081878,
+        "applyDuration":20,
+        "checkDuration":30,
+        "status":0,
+        "isAffiliateOperationTriggered":false,
+        "isRecommendTriggered":false,
+        "hasD1Check":true,
+        "canReport":true,
+        "principal":5000,
+        "productName":"iphone 5s",
+        "merchantStoreName":"世纪大道店",
+        "user":{
+            "idName":"test",
+            "mobile":"13545875896",
+            "headImageUrl":"#",
+            "weiXinUserNickName":"wx name"
+        },
+        "merchantUser":{
+            "idName":"李四",
+            "mobile":"15845789658"
+        },
+        "dealerUser":{
+            "idName":"王五",
+            "mobile":"16845789854"
+        }
+    },{
+        "id":2,
+        "instalmentOperation":"",
+        "dateAdded":1450751081878,
+        "applyDuration":20,
+        "checkDuration":30,
+        "status":0,
+        "isAffiliateOperationTriggered":false,
+        "isRecommendTriggered":false,
+        "hasD1Check":false,
+        "canReport":true,
+        "principal":5000,
+        "productName":"iphone 5s",
+        "merchantStoreName":"世纪大道店",
+        "user":{
+            "idName":"test",
+            "mobile":"13545875896",
+            "headImageUrl":"#",
+            "weiXinUserNickName":"wx name"
+        },
+        "merchantUser":{
+            "idName":"李四",
+            "mobile":"15845789658"
+        },
+        "dealerUser":{
+            "idName":"王五",
+            "mobile":"16845789854"
+        }
+    }]
+}

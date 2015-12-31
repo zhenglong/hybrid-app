@@ -1,0 +1,30 @@
+<!-- POS & S1 list -->
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-xs-12">
+			<h3 class="head-bar">我的POS和S1列表</h3>
+			<div class="app-form">
+				<div class="panel-list">
+					<div ng-if="isEmpty" class="alert alert-warning">尚无POS和S1信息<br><small>点击上面的【创建POS】按钮，可添加新的POS</small></div>
+					<div ng-repeat="pos in postasks" class="panel panel-default">
+						<div class="panel-heading" ng-class="{'panel-info': pos.status!==0}">
+							<div class="panel--title"><a href="#/pos/?id={{pos.id}}&status={{pos.status}}">{{pos.name}}</a></div>
+						</div>
+						<div class="panel-body">
+							<div class="btn-list">
+								<a ng-repeat="s1 in pos.s1list" ng-class="{'alert-info':s1.status!==0}" class="btn btn-col-4 btn-default" href="#s1/?pid={{pos.id}}&pname={{pos.name}}&id={{s1.id}}&status={{s1.status}}" role="button">{{s1.name}}</a>
+								<a href="#/s1/?pid={{pos.id}}&pname={{pos.name}}" class="btn btn-brand btn-col-4 "><span class="glyphicon glyphicon-plus"></span></a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<footer class="footer-bar">
+            <a href="#/pos/" class="btn btn-brand btn-block btn-lg btn-create">
+            创建POS
+            </a>
+			</footer>
+        </div>
+    </div>
+</div>
+<!-- /POS & S1 list -->

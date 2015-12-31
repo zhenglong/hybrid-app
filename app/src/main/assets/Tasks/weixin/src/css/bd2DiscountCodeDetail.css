@@ -1,0 +1,12 @@
+.table {
+  background-color: #fff;
+  table-layout: fixed; }
+  .table td {
+    padding: 0em !important; }
+  .table a {
+    display: block;
+    padding: .25em;
+    word-wrap: break-word;
+    white-space: pre-wrap; }
+
+/*# sourceMappingURL=maps/bd2DiscountCodeDetail.css.map */

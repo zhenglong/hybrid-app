@@ -1,0 +1,156 @@
+<div cf-page id="applications" ng-attr-data-title="{{title}}" data-active="true">
+	<div class="head-bar">
+		<div id="refreshHeader">
+			<span id="refresh_interval">{{lastRefreshMinute}}</span> 分钟前刷新
+			<i class="glyphicon glyphicon-refresh clickable" ng-click="onRefreshPage()"></i>
+		</div>
+		<div cf-navbar>
+			<ul>
+				<li>
+					<a href="#" ng-click="onSwitchTab($event, '#application')" class="ui-btn-active">今日申请</a>
+				</li>
+				<li>
+					<a href="#" ng-click="onSwitchTab($event, '#currentWarningMerchantStoreNames')">
+						单量异常门店
+					</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<div id="tabs">
+		<div id="application" class="tab-active">
+			<div class="app-form">
+				<ul cf-listview>
+					<li class="appInfoItem" ng-attr-data-appid="{{app.id}}" ng-style="{'background-color':(app.instalmentOperation == '等待D1签单' ? '#FACAC2' : '')}" ng-repeat="app in appList">
+						<div>
+                            <img ng-src="{{app.user.headImageUrl}}" style="max-height: 100px;max-width: 100px;" />
+							<span>微信名：&nbsp;{{app.user.weiXinUserNickName}}</span>
+						</div>
+						<div class="clearfix">
+							<a class="pull-left" ng-if="!!app.instalmentOperation && app.instalmentOperation.indexOf('电子借条')>-1" ng-href="displayIou.html#?appId={{app.Id}}">电子借条</a>
+                            <!-- directive: snippet ['.snippet1', $parent.snippets] -->
+						</div>
+						<div class="time_status clearfix">
+							<i class="fa fa-clock-o text-brand"></i>
+							<span class="time_content">{{app.dateAdded|date:'yyyy-MM-dd'}}</span>
+							<i class="fa fa-history text-brand"></i>
+							<span>{{app.applyDuration}}分钟</span>
+							<i class="fa fa-hourglass-end text-brand" ></i>
+							<span>{{app.checkDuration}}分钟</span>
+							<div class="pull-right">
+								<i ng-if="app.isRecommendTriggered == 1" class="fa fa-thumbs-o-up"></i>
+                                <!-- directive: snippet ['.snippet2', snippets] -->
+								<span ng-if="app.status == ApplicationStatus.Canceled" class="instalment_status canceled">已取消</span>
+								<span ng-if="app.status == ApplicationStatus.Rejected" class="instalment_status rejected">已拒绝</span>
+								<span ng-if="app.status >= ApplicationStatus.Completed" class="instalment_status completed">已放款</span>
+                                <!-- directive: snippet ['.snippet3', snippets] -->
+							</div>
+						</div>
+						<div class="user_info">
+							<span >{{app.user.idName}}</span>
+							<span >￥{{app.principal}}</span>
+							<span >{{app.productName}}</span>
+							<span  style="display:none">{{app.user.mobile}}</span>
+						</div>
+						<div class="s1_infoi clearfix">
+							<span>S1 {{app.merchantUser.idName}}</span>
+							<span>
+                                {{app.merchantStoreName}}
+                            </span>
+                            <!-- directive: snippet ['.snippet4', snippets] -->
+						</div>
+						<div class="d1_info clearfix">
+							<span>D1 {{app.dealerUser.name}}</span>
+							<span>
+							{{app.merchantStoreName}}
+							</span>
+                            <!-- directive: snippet ['.snippet4', snippets] -->
+						</div>
+                        <!-- directive: snippet ['.snippet5', snippets] -->
+                        <!-- directive: snippet ['.snippet6', snippets] -->
+					</li>
+				</ul>
+			</div>                
+		</div>
+		<div id="currentWarningMerchantStoreNames" class="hide">
+			<div class="app-form">
+				<ul cf-listview>
+					<li ng-if="!currentWarningStoreList.length">太好了，没有单量异常门店！</li>
+					<li ng-repeat="item in currentWarningStoreList">
+						<i class="fa fa-exclamation-circle text-brand"></i>
+						{{item}}
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+<div id="item_details" class="modal" tabindex="-1" role="dialog" aria-lablledby="item_details_label">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">&times;</button>
+				<h4 id="item_details_label" class="modal-title">申请详情</h4>
+			</div>
+			<div class="modal-body">
+				<div class="time_status">
+					<i class="fa fa-clock-o text-brand"></i>
+					<span class="time_content">{{currentApp.dateAdded|date:'yyyy-mm-dd'}}</span>
+					<i class="fa fa-history text-brand"></i>
+					<span>{{currentApp.applyDuration}} 分钟</span>
+					<i class="fa fa-hourglass-end text-brand" ></i>
+					<span>{{currentApp.checkDuration}} 分钟</span>
+				</div>
+				<div class="user_info">
+					<span >￥{{currentApp.principal}}</span>
+					<span >{{currentApp.productName}}</span>
+				</div>
+				<div class="user_info_details info_details clearfix">
+					<span >{{currentApp.user.idName}}</span>
+					<a class="pull-right text-brand"  ng-href="tel:{{currentApp.user.mobile}}">{{currentApp.user.mobile}}</a>
+				</div>
+				<div class="s1_info_details info_details">
+					<span >S1 {{currentApp.merchantUser.idName}}</span>
+					<a class="pull-right text-brand" ng-href="tel:{{currentApp.merchantUser.mobile}}">{{currentApp.merchantUser.mobile}}</a>
+				</div>
+				<div class="d1_info_details info_details">
+					<span >D1 {{currentApp.dealerUser.idName}}</span>
+					<a class="pull-right text-brand" ng-href="tel:{{currentApp.dealerUser.mobile}}">{{currentApp.dealerUser.mobile}}</a>
+				</div>
+				<div class="pos_info">
+					{{currentApp.merchantStoreName}}
+				</div>
+				<div class="text-brand">
+					{{currentApp.instalmentOperation}}
+				</div>
+			</div>
+			<div class="modal-footer">
+                <!-- directive: snippet ['.snippet7', snippets] -->
+			</div>
+		</div>
+	</div>
+</div>
+<div id="Recommend" class="modal" tabindex="-1" data-backdrop="static" role="dialog" aria-lablledby="RecommendModalTitle">
+    <div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button class="close" type="button" aria-hidden="true" aria-label="Close" data-dismiss="modal"><span>&times;</span></button>
+				<h4 class="modal-title" id="RecommendModalTitle">推荐原因</h4>
+			</div>
+			<div class="modal-body">
+				<textarea name="Recommend" id="input-recommend" ng-model="recommendComment" placeholder="填写推荐理由"></textarea>
+			</div>
+			<div class="modal-footer">
+				<div class="line">
+					<div class="half-line">
+						<button type="button" data-dismiss="modal" class="btn">取消</button>
+					</div>
+					<div class="half-line">
+						<button id="recommend-form" ng-disabled="!recommendComment" type="button" ng-click="onRecommend()" class="btn btn-brand">提交
+					</div>
+				</div>
+				</button>
+			</div>
+		</div>
+    </div>
+</div>

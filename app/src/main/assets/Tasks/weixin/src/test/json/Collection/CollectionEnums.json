@@ -1,0 +1,61 @@
+{
+	"status":0,
+	"msg": "",
+	"data": {
+		"collectionWays": [{
+			"text": "电话催收",
+			"value": 1
+		}, {
+			"text": "上门催收（易）",
+			"value": 2
+		}, {
+			"text": "上门催收（难）",
+			"value": 3
+		}, {
+			"text": "短信微信QQ催收",
+			"value": 4
+		}],
+		"customerCatalogs": [{
+			"text": "有意向还款",
+			"value": 1
+		}, {
+			"text": "老赖（信用问题，客户拒绝还款）",
+			"value": 2
+		}, {
+			"text": "第三方欺诈（客户表示被中介包装、骗贷）",
+			"value": 3
+		}, {
+			"text": "失联（所有联系方式，包括本人和第三方都无法联系到）",
+			"value": 4
+		}, {
+			"text": "跟进中",
+			"value": 5
+		}, {
+			"text": "其他（刑拘等）",
+			"value": 6
+		}],
+		"collectionResults": [{
+			"text": "客户承诺还清截止至当前所欠所有金额",
+			"value": 1
+		},{
+			"text": "客户承诺一次性提前金额还款",
+			"value": 2
+		},{
+			"text": "第三方承诺还清截止至当前所欠所有金额",
+			"value": 3
+		},{
+			"text": "第三方承诺一次性提前金额还款",
+			"value": 4
+		},{
+			"text": "催收失败",
+			"value": 5
+		}],
+        "agreedPayWays": [{
+            "value": "a-abcde",
+            "text": "打到本人银行卡，等待代扣"
+        }, {
+            "value": "b-abdef",
+            "text": "现金给D1,由D1打款"
+        }]
+	}
+}

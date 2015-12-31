@@ -1,0 +1,35 @@
+{
+    "status": 0,
+    "data": {
+        "status": 0,
+        "id": "74CDFABA-FE0A-E411-9BA0-AC853D9F54BA",
+        "name": "家得福手机连锁人民路店",
+        "provinceCode": "320000",
+        "cityCode": "321100",
+        "blockCode": "321100",
+        "address": "昆山市玉山镇人民路31号2楼",
+        "phone": "021-33455567",
+		"productConfig":[
+			{
+				"commission":{ 
+					 "code" : "B35E5C0B-0A0B-E411-9BA0-AC853D9F54BA" , 
+					 "name" : "返佣阶梯A001"
+				},
+				"product":{ 
+					 "code" : "B35E5C0B-0A0B-E411-9BA0-AC853D9F54Bd", 
+					 "name" : "普通产品",
+					 "catalog": "1"
+				}
+			}
+		],
+        "agreementPhoto": "http://ori.hangzhou.com.cn/ornews/images/attachement/jpg/site2/20090903/00192177cf090c09ea7201.jpg",
+        "licensePhoto": "http://ori.hangzhou.com.cn/ornews/images/attachement/jpg/site2/20090903/00192177cf090c09ea7201.jpg",
+        "district": [{
+            "id": "B35E5C0B-0A0B-E411-9BA0-AC853D9F54BA",
+            "text": "无锡"
+        }, {
+            "id": "A35E5C0B-0A0B-E411-9BA0-AC853D9F54BA",
+            "text": "苏州"
+        }]
+    }
+}
