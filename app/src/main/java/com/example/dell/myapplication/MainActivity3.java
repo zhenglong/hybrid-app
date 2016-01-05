@@ -50,7 +50,7 @@ public class MainActivity3 extends AppCompatActivity {
         }
         _jsBind = new JsBind(this);
         _webView.addJavascriptInterface(_jsBind, "Android");
-        String url = "file:///android_asset/Tasks/weixin/src/application/currentApplication.html";
+        String url = "file:///android_asset/test/index.html";
         Intent intent = this.getIntent();
         if (intent != null) {
             String urlParam = intent.getStringExtra("url");
