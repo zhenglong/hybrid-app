@@ -1,12 +1,16 @@
 package com.example.dell.myapplication;
 
 import android.Manifest.permission;
+import android.content.ComponentName;
+import android.content.Context;
 import android.content.Intent;
+import android.content.ServiceConnection;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.IBinder;
 import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
@@ -21,8 +25,6 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.widget.Toast;
 
-import java.io.FileInputStream;
-
 public class MainActivity3 extends AppCompatActivity {
 
     private WebView _webView;
@@ -30,6 +32,7 @@ public class MainActivity3 extends AppCompatActivity {
     private Intent _imageData;
     private static final int REQUEST_LOCATION_PERMISSION = 100;
     private String logName = "ma3";
+    private UploadService _uploadService;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,7 +69,23 @@ public class MainActivity3 extends AppCompatActivity {
         });
         setContentView(_webView);
         acquireLocationPermission(REQUEST_LOCATION_PERMISSION);
+        Intent intent1 = new Intent(this, UploadService.class);
+        bindService(intent1, _conn, Context.BIND_AUTO_CREATE);
+        Log.d(logName, "completed to create");
     }
+
+    private ServiceConnection _conn = new ServiceConnection() {
+        @Override
+        public void onServiceConnected(ComponentName componentName, IBinder iBinder) {
+            Log.d(logName, "service connected");
+            _uploadService = ((UploadService.UploadBinder)iBinder).getService();
+        }
+
+        @Override
+        public void onServiceDisconnected(ComponentName componentName) {
+            _uploadService = null;
+        }
+    };
 
     private void readImage(Intent data) {
         String funcName = "readImage";
@@ -85,10 +104,15 @@ public class MainActivity3 extends AppCompatActivity {
             String decodedImageString = cursor.getString(columnIndex);
             cursor.close();
             Log.d(funcName, decodedImageString);
-            String imgBase64String;
-            FileInputStream stream = new FileInputStream(decodedImageString);
+
             _webView.loadUrl(String.format("javascript:bridge.callback(%1d, '%2s')",
                     _jsBind.CallbackId, decodedImageString));
+            // start the upload service
+            if (_uploadService != null) {
+                _uploadService.upload(decodedImageString);
+            } else {
+                Toast.makeText(this, Consts.uiIsBusy, Toast.LENGTH_SHORT).show();
+            }
         } catch (Exception e) {
             Log.d(funcName, e.getMessage(), e);
             Toast.makeText(this, "Something went wrong", Toast.LENGTH_LONG).show();
@@ -156,5 +180,11 @@ public class MainActivity3 extends AppCompatActivity {
             return true;
         }
         return super.onKeyDown(keyCode, event);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        unbindService(_conn);
     }
 }
