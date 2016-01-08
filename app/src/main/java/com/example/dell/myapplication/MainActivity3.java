@@ -109,7 +109,9 @@ public class MainActivity3 extends AppCompatActivity {
                     _jsBind.CallbackId, decodedImageString));
             // start the upload service
             if (_uploadService != null) {
-                _uploadService.upload(decodedImageString);
+                Intent intent = new Intent(this, UploadService.class);
+                intent.putExtra("filePath", decodedImageString);
+                startService(intent);
             } else {
                 Toast.makeText(this, Consts.uiIsBusy, Toast.LENGTH_SHORT).show();
             }
