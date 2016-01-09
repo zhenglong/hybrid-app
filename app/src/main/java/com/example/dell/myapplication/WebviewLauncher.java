@@ -28,14 +28,15 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.widget.Toast;
 
-public class MainActivity3 extends AppCompatActivity {
+public class WebViewLauncher extends AppCompatActivity {
 
     private WebView _webView;
     private JsBind _jsBind;
     private Intent _imageData;
     private static final int REQUEST_LOCATION_PERMISSION = 100;
-    private String LOG_TAG = MainActivity3.class.getName();
+    private String LOG_TAG = WebViewLauncher.class.getName();
     private UploadService _uploadService;
+    private static final String DEFAULT_LAUNCH_URL = "file:///android_asset/test/index.html";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,7 +57,7 @@ public class MainActivity3 extends AppCompatActivity {
         }
         _jsBind = new JsBind(this);
         _webView.addJavascriptInterface(_jsBind, "Android");
-        String url = "file:///android_asset/test/index.html";
+        String url = DEFAULT_LAUNCH_URL;
         Intent intent = this.getIntent();
         if (intent != null) {
             String urlParam = intent.getStringExtra("url");
@@ -89,7 +90,7 @@ public class MainActivity3 extends AppCompatActivity {
                     switch (status) {
                         case failed:
                         case successful:
-                            Toast.makeText(MainActivity3.this, intent.getStringExtra(UploadService.DATA_FIELD_MESSAGE), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(WebViewLauncher.this, intent.getStringExtra(UploadService.DATA_FIELD_MESSAGE), Toast.LENGTH_SHORT).show();
                             break;
                     }
             }

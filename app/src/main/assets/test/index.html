@@ -2,39 +2,49 @@
 <html>
 
 <head>
-  <meta charset="utf-8" />
-  <meta http-equiv="content-type" content="text/html;charset=utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
-  <title>index</title>
+    <meta charset="utf-8" />
+    <meta http-equiv="content-type" content="text/html;charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <title>index</title>
 </head>
 
 <body>
-  <input type="button" value="选择图片" onClick="chooseImage()" />
-  <input type="button" value="获取地理位置" onClick="getLocation()" />
-  <img id="image" />
-  <hr/>
-  <a href="list.html">go to list.html</a>
-  <script type="text/javascript" src="jquery-2.1.4.min.js"></script>
-  <script type="text/javascript" src="lib/fastclick.js"></script>
-  <script type="text/javascript" src="bridge.js"></script>
-  <script type="text/javascript" src="native.js"></script>
-  <script type="text/javascript" src="native-android.js"></script>
-  <script type="text/javascript">
-    $(function() {
-        FastClick.attach(document.body);
-    });
-    function chooseImage() {
-      bridge.chooseImage({
-        success: function(result) {
-          console.log(result);
-          $('#image').attr("src", result);
+    <input type="button" value="选择图片" onClick="chooseImage()" />
+    <input type="button" value="获取地理位置" onClick="getLocation()" />
+    <img id="image" />
+    <br/>
+    <input type="date" id="date" />
+    <hr/>
+    <a href="list.html">go to list.html</a>
+    <script type="text/javascript" src="jquery-2.1.4.min.js"></script>
+    <script type="text/javascript" src="lib/fastclick.js"></script>
+    <script type="text/javascript" src="bridge.js"></script>
+    <script type="text/javascript" src="native.js"></script>
+    <script type="text/javascript" src="native-android.js"></script>
+    <script type="text/javascript">
+        $(function() {
+            FastClick.attach(document.body);
+            $('#date').on('touchstart', function() {
+                var $this = $(this);
+                bridge.displayDatePicker(function(date) {
+                    $this.val(date);
+                });
+            });
+        });
+
+        function chooseImage() {
+            bridge.chooseImage({
+                success: function(result) {
+                    console.log(result);
+                    $('#image').attr("src", result);
+                }
+            });
         }
-      });
-    }
-    function getLocation() {
-        bridge.getLocation();
-    }
-  </script>
+
+        function getLocation() {
+            bridge.getLocation();
+        }
+    </script>
 </body>
 
 </html>

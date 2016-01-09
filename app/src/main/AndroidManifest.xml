@@ -23,12 +23,8 @@
             android:label="@string/title_activity_main" >
         </activity>
         <activity
-            android:name=".MainActivity2"
-            android:label="@string/title_activity_main_activity2" >
-        </activity>
-        <activity
-            android:name=".MainActivity3"
-            android:label="@string/title_activity_main_activity3" >
+            android:name=".WebViewLauncher"
+            android:label="@string/title_activity_main_webViewLauncher" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>

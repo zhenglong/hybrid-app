@@ -1,11 +1,6 @@
 package com.example.dell.myapplication;
 
 import android.content.Intent;
-import android.net.Uri;
-import android.os.Build;
-import android.os.Bundle;
-import android.util.Log;
-import android.webkit.GeolocationPermissions;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
@@ -17,7 +12,7 @@ class MyWebViewClient extends WebViewClient {
 
     @Override
     public boolean shouldOverrideUrlLoading(WebView view, String url) {
-        Intent intent = new Intent(view.getContext(), MainActivity3.class);
+        Intent intent = new Intent(view.getContext(), WebViewLauncher.class);
         intent.putExtra("url", url);
         view.getContext().startActivity(intent);
         return true;

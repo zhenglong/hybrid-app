@@ -12,4 +12,8 @@
   this.displayToast = function(str) {
 	  _context.showToast(str);
   };
+
+  this.displayDatePicker = function(title, initDate, funcId) {
+      _context.showDatePicker(title, initDate, funcId);
+  };
 };
