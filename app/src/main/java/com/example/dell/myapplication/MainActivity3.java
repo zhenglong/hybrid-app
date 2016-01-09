@@ -1,9 +1,11 @@
 package com.example.dell.myapplication;
 
 import android.Manifest.permission;
+import android.content.BroadcastReceiver;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.ServiceConnection;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
@@ -15,6 +17,7 @@ import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
+import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.KeyEvent;
@@ -31,7 +34,7 @@ public class MainActivity3 extends AppCompatActivity {
     private JsBind _jsBind;
     private Intent _imageData;
     private static final int REQUEST_LOCATION_PERMISSION = 100;
-    private String logName = "ma3";
+    private String LOG_TAG = MainActivity3.class.getName();
     private UploadService _uploadService;
 
     @Override
@@ -71,13 +74,32 @@ public class MainActivity3 extends AppCompatActivity {
         acquireLocationPermission(REQUEST_LOCATION_PERMISSION);
         Intent intent1 = new Intent(this, UploadService.class);
         bindService(intent1, _conn, Context.BIND_AUTO_CREATE);
-        Log.d(logName, "completed to create");
+        LocalBroadcastManager.getInstance(this).registerReceiver(_messageReceiver, new IntentFilter("uploadStatusChange"));
+        Log.d(LOG_TAG, "completed to create");
     }
+
+    private BroadcastReceiver _messageReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            Log.d(LOG_TAG, "receive message from upload service");
+            String action = intent.getAction();
+            switch (action) {
+                case UploadService.UPLOAD_STATUS_CHANGE:
+                    UploadProgressStatusType status = (UploadProgressStatusType) intent.getSerializableExtra(UploadService.DATA_FIELD_STATUS);
+                    switch (status) {
+                        case failed:
+                        case successful:
+                            Toast.makeText(MainActivity3.this, intent.getStringExtra(UploadService.DATA_FIELD_MESSAGE), Toast.LENGTH_SHORT).show();
+                            break;
+                    }
+            }
+        }
+    };
 
     private ServiceConnection _conn = new ServiceConnection() {
         @Override
         public void onServiceConnected(ComponentName componentName, IBinder iBinder) {
-            Log.d(logName, "service connected");
+            Log.d(LOG_TAG, "service connected");
             _uploadService = ((UploadService.UploadBinder)iBinder).getService();
         }
 
@@ -88,7 +110,6 @@ public class MainActivity3 extends AppCompatActivity {
     };
 
     private void readImage(Intent data) {
-        String funcName = "readImage";
         try {
             // Get the image from data
             Uri selectedImage = data.getData();
@@ -103,20 +124,20 @@ public class MainActivity3 extends AppCompatActivity {
             int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
             String decodedImageString = cursor.getString(columnIndex);
             cursor.close();
-            Log.d(funcName, decodedImageString);
+            Log.d(LOG_TAG, decodedImageString);
 
             _webView.loadUrl(String.format("javascript:bridge.callback(%1d, '%2s')",
                     _jsBind.CallbackId, decodedImageString));
             // start the upload service
             if (_uploadService != null) {
                 Intent intent = new Intent(this, UploadService.class);
-                intent.putExtra("filePath", decodedImageString);
+                intent.putExtra(UploadService.DATA_FIELD_FILE_PATH, decodedImageString);
                 startService(intent);
             } else {
                 Toast.makeText(this, Consts.uiIsBusy, Toast.LENGTH_SHORT).show();
             }
         } catch (Exception e) {
-            Log.d(funcName, e.getMessage(), e);
+            Log.d(LOG_TAG, e.getMessage(), e);
             Toast.makeText(this, "Something went wrong", Toast.LENGTH_LONG).show();
         }
     }
@@ -177,7 +198,7 @@ public class MainActivity3 extends AppCompatActivity {
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (keyCode == KeyEvent.KEYCODE_BACK && _webView.canGoBack()) {
-            Log.d("onKeyDown", "go back");
+            Log.d(LOG_TAG, "go back");
             _webView.goBack();
             return true;
         }
