@@ -13,7 +13,7 @@
     <input type="button" value="获取地理位置" onClick="getLocation()" />
     <img id="image" />
     <br/>
-    <input type="date" id="date" />
+    <input type="date" id="date" value="2015-11-21" />
     <hr/>
     <a href="list.html">go to list.html</a>
     <script type="text/javascript" src="jquery-2.1.4.min.js"></script>
@@ -24,9 +24,9 @@
     <script type="text/javascript">
         $(function() {
             FastClick.attach(document.body);
-            $('#date').on('touchstart', function() {
+            $('input[type="date"]').on('touchstart', function() {
                 var $this = $(this);
-                bridge.displayDatePicker(function(date) {
+                bridge.displayDatePicker(new Date($this.val()), function(date) {
                     $this.val(date);
                 });
             });

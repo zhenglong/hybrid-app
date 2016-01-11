@@ -57,7 +57,7 @@ function Bridge(native_, http) {
         },
         displayDatePicker: function(title, initDate, callback) {
             function isDate(v) {
-                Object.prototype.toString.call(v) == '[object Date]';
+                return (Object.prototype.toString.call(v) == '[object Date]');
             }
             if (arguments.length == 1) {
                 callback = title;
@@ -69,6 +69,7 @@ function Bridge(native_, http) {
                 }
                 callback = initDate;
             }
+            console.log(title + ',' + initDate);
             var funcId = getUuid();
             if (!initDate) initDate = new Date();
             if (!title) title = "选择日期";

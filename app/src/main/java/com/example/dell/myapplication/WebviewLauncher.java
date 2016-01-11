@@ -128,7 +128,7 @@ public class WebViewLauncher extends AppCompatActivity {
             Log.d(LOG_TAG, decodedImageString);
 
             _webView.loadUrl(String.format("javascript:bridge.callback(%1d, '%2s')",
-                    _jsBind.CallbackId, decodedImageString));
+                    _jsBind.callbacks.get(JsBind.LOAD_IMAGE_KEY), decodedImageString));
             // start the upload service
             if (_uploadService != null) {
                 Intent intent = new Intent(this, UploadService.class);
