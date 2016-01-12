@@ -75,7 +75,6 @@ public class UploadService extends Service {
                     _progressNotification = new ProgressNotification(UploadService.this);
                     _progressNotification.create(PROGRESS_NOTIFICATION_ID, Consts.uploadFileNotificationTitle,
                             Consts.uploadFileNotificationContent);
-                    // do something in background
                     final ProgressListener progressListener = new ProgressListener() {
                         @Override
                         public void onResponseProgress(long bytesRead, long contentLength, boolean done) {

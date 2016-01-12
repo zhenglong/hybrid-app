@@ -1,0 +1,47 @@
+html {
+    font-size:14px;
+}
+body {
+    margin: 0;
+}
+input[type="button"], button {
+    display: block;
+    width: 100%;
+    padding:.5rem;
+    margin-top:1rem;
+    border-left-width: 0px;
+    border-right-width: 0px;
+}
+input[type="button"]:focus, button:focus {
+    outline: 0;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+img {
+    width:100%;
+}
+input[type="date"] {
+    padding: .5rem 0;
+}
+label {
+    display: block;
+    margin-bottom: .5rem;
+}
+a {
+    text-decoration: none;
+    display: block;
+    padding: .5rem;
+}
+a:active,a:hover,a:visited {
+    text-decoration: none;
+}
+.form-control {
+    margin: 0rem .5rem;
+}
+.form-control label {
+    color:#888;
+}
+.form-control .controls {
+    width: 100%;
+    display: block;
+}

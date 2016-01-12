@@ -6,16 +6,18 @@
     <meta http-equiv="content-type" content="text/html;charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
     <title>index</title>
+    <link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
+    <a href="list.html">go to list.html</a>
     <input type="button" value="选择图片" onClick="chooseImage()" />
     <input type="button" value="获取地理位置" onClick="getLocation()" />
     <img id="image" />
-    <br/>
-    <input type="date" id="date" value="2015-11-21" />
-    <hr/>
-    <a href="list.html">go to list.html</a>
+    <div class="form-control">
+        <label>选择日期</label>
+        <input class="controls" type="date" id="date" value="2015-11-21" />
+    </div>
     <script type="text/javascript" src="jquery-2.1.4.min.js"></script>
     <script type="text/javascript" src="lib/fastclick.js"></script>
     <script type="text/javascript" src="bridge.js"></script>

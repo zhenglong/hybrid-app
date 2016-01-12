@@ -134,6 +134,7 @@ public class WebViewLauncher extends AppCompatActivity {
                 Intent intent = new Intent(this, UploadService.class);
                 intent.putExtra(UploadService.DATA_FIELD_FILE_PATH, decodedImageString);
                 startService(intent);
+                Log.d(LOG_TAG, "after start service");
             } else {
                 Toast.makeText(this, Consts.uiIsBusy, Toast.LENGTH_SHORT).show();
             }
