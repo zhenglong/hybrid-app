@@ -10,6 +10,8 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -26,6 +28,7 @@ public class DrawerActivity extends AppCompatActivity {
     DrawerLayout _drawerLayout;
     String _currentContentTitle;
     ActionBarDrawerToggle _drawerToggle;
+    private static final String LOG_TAG = DrawerActivity.class.getName();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,15 +42,15 @@ public class DrawerActivity extends AppCompatActivity {
         _menuDrawer.setOnItemClickListener(new DrawerItemClickListener());
 
         _drawerLayout = (DrawerLayout)findViewById(R.id.drawer_layout);
-        _drawerToggle = new DrawerMenuToggle(this, _drawerLayout, R.drawable.cast_ic_notification_0,
-                R.string.drawer_open, R.string.drawer_close);
+        _drawerToggle = new DrawerMenuToggle(this, _drawerLayout, R.string.drawer_open, R.string.drawer_close);
         _drawerLayout.setDrawerListener(_drawerToggle);
 
         ActionBar actionBar =getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
         actionBar.setHomeButtonEnabled(true);
+        //actionBar.setDisplayShowHomeEnabled(true);
         actionBar.setTitle(_currentContentTitle);
-        actionBar.setDisplayShowHomeEnabled(false);
+        actionBar.setIcon(R.drawable.common_signin_btn_icon_light);
     }
 
     private class DrawerItemClickListener implements ListView.OnItemClickListener {
@@ -70,6 +73,7 @@ public class DrawerActivity extends AppCompatActivity {
             _menuDrawer.setItemChecked(position, true);
             setTitle(_menuDrawerAdapter.getItem(position).get_menuTitle());
             _drawerLayout.closeDrawer(_menuDrawer);
+            Log.d(LOG_TAG, "on select item in drawer list view");
         }
 
         public void setTitle(String title) {
@@ -80,15 +84,17 @@ public class DrawerActivity extends AppCompatActivity {
 
     private class DrawerMenuToggle extends ActionBarDrawerToggle {
         public DrawerMenuToggle(Activity activity, DrawerLayout drawerLayout,
-                                int drawerImageRes, int openDrawerContentDescRes,
+                                int openDrawerContentDescRes,
                                 int closeDrawerContentDescRes) {
             super(activity, drawerLayout, openDrawerContentDescRes, closeDrawerContentDescRes);
         }
 
-        public void onDrawerClose(View view) {
-            super.onDrawerClosed(view);
+        @Override
+        public void onDrawerClosed(View drawerView) {
+            super.onDrawerClosed(drawerView);
             getSupportActionBar().setTitle(_currentContentTitle);
             invalidateOptionsMenu();
+            Log.d(LOG_TAG, "drawer close");
         }
 
         @Override
@@ -96,6 +102,7 @@ public class DrawerActivity extends AppCompatActivity {
             super.onDrawerOpened(drawerView);
             getSupportActionBar().setTitle(R.string.global_title);
             invalidateOptionsMenu();
+            Log.d(LOG_TAG, "drawer opened");
         }
     }
 
@@ -103,6 +110,7 @@ public class DrawerActivity extends AppCompatActivity {
     protected void onPostCreate(Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
         _drawerToggle.syncState();
+        Log.d(LOG_TAG, "post create");
     }
 
     @Override
@@ -135,6 +143,7 @@ public class DrawerActivity extends AppCompatActivity {
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
         boolean drawerOpen = _drawerLayout.isDrawerOpen(_menuDrawer);
+        Log.d(LOG_TAG, "on prepareOptionsMenu:" + drawerOpen);
         menu.findItem(R.id.action_websearch).setVisible(!drawerOpen);
         return super.onPrepareOptionsMenu(menu);
     }
