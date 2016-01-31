@@ -51,6 +51,7 @@ public class DrawerActivity extends AppCompatActivity {
         //actionBar.setDisplayShowHomeEnabled(true);
         actionBar.setTitle(_currentContentTitle);
         actionBar.setIcon(R.drawable.common_signin_btn_icon_light);
+        JsExecutor.add(100, 200);
     }
 
     private class DrawerItemClickListener implements ListView.OnItemClickListener {

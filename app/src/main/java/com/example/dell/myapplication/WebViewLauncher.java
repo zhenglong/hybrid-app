@@ -65,7 +65,7 @@ public class WebViewLauncher extends AppCompatActivity {
         }
         _webView.loadUrl(url);
         _webView.setWebViewClient(new MyWebViewClient());
-        _webView.setWebChromeClient(new WebChromeClient(){
+        _webView.setWebChromeClient(new WebChromeClient() {
             @Override
             public void onGeolocationPermissionsShowPrompt(String origin, GeolocationPermissions.Callback callback) {
                 callback.invoke(origin, true, true);
