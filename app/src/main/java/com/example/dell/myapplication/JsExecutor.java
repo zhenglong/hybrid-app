@@ -17,7 +17,7 @@ public class JsExecutor {
         double result = 0;
         try {
             Scriptable scope = rhino.initStandardObjects();
-            String s = "function add(i, j) { return (i+j); }";
+            String s = "function add(i, j) { return (i*j); }";
             String funcName = "add";
             rhino.evaluateString(scope, s, "JavaScript", 1, null);
             Object obj = scope.get(funcName, scope);

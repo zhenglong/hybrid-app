@@ -6,6 +6,7 @@ import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.res.Configuration;
 import android.os.Bundle;
+import android.os.Debug;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -52,6 +53,9 @@ public class DrawerActivity extends AppCompatActivity {
         actionBar.setTitle(_currentContentTitle);
         actionBar.setIcon(R.drawable.common_signin_btn_icon_light);
         JsExecutor.add(100, 200);
+        Debug.startMethodTracing("jniTest");
+        Debug.stopMethodTracing();
+
     }
 
     private class DrawerItemClickListener implements ListView.OnItemClickListener {
