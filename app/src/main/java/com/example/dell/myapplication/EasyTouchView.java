@@ -29,6 +29,7 @@ public class EasyTouchView extends View {
     private PopupWindow mPopuWin;
     private ServiceListener mSerLisrener;
     private View mSettingTable;
+    private View mDrawable;
     private int mTag = 0;
     private int midX;
     private int midY;
@@ -96,6 +97,8 @@ public class EasyTouchView extends View {
         backButton.setOnClickListener(mClickListener);
         homeButton.setOnClickListener(mClickListener);
         exitTouchButton.setOnClickListener(mClickListener);
+
+        mDrawable = new CustomDrawableView(mContext);
     }
 
     private OnClickListener mClickListener = new OnClickListener() {
@@ -201,7 +204,7 @@ public class EasyTouchView extends View {
             int newOffsetX = mWMParams.x;
             int newOffsetY = mWMParams.y;
             if (mOldOffsetX == newOffsetX && mOldOffsetY == newOffsetY) {
-                mPopuWin = new PopupWindow(mSettingTable, LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
+                mPopuWin = new PopupWindow(mDrawable, LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
                 mPopuWin.setTouchInterceptor(new OnTouchListener() {
 
                     public boolean onTouch(View v, MotionEvent event) {
