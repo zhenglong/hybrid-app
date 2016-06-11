@@ -1,7 +1,13 @@
 package com.example.dell.myapplication;
+import android.annotation.TargetApi;
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
+import android.provider.Settings;
+import android.support.v4.app.Fragment;
 import android.view.View;
 import android.view.Window;
 import android.view.View.OnClickListener;
@@ -14,6 +20,8 @@ public class EasyTouchActivity extends Activity {
     }
 
     private Button mShowViewButton = null;
+
+    private static final int REQUEST_CODE_ALERT_WINDOW = 1234;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -39,9 +47,42 @@ public class EasyTouchActivity extends Activity {
 
             @Override
             public void onClick(View v) {
-                startAuxiliaryService(null);
+                if (!requestSystemAlertPermission(EasyTouchActivity.this, null, REQUEST_CODE_ALERT_WINDOW)) {
+                    startAuxiliaryService(null);
+                }
             }
         });
+    }
+
+    public static boolean requestSystemAlertPermission(Activity context, Fragment fragment, int requestCode) {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
+            return false;
+        }
+        final String packageName = context == null ? fragment.getActivity().getPackageName() : context.getPackageName();
+        final Intent intent = new Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION, Uri.parse("package:" + packageName));
+        if (fragment != null)
+            fragment.startActivityForResult(intent, requestCode);
+        else
+            context.startActivityForResult(intent, requestCode);
+        return true;
+    }
+
+    @TargetApi(Build.VERSION_CODES.M)
+    public static boolean isSystemAlertPermissionGranted(Context context) {
+        final boolean result = Build.VERSION.SDK_INT < Build.VERSION_CODES.M || Settings.canDrawOverlays(context);
+        return result;
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        switch (requestCode) {
+            case REQUEST_CODE_ALERT_WINDOW:
+                if (isSystemAlertPermissionGranted(EasyTouchActivity.this)) {
+                    startAuxiliaryService(null);
+                }
+                break;
+        }
+        super.onActivityResult(requestCode, resultCode, data);
     }
 
     public void startAuxiliaryService(View v) {

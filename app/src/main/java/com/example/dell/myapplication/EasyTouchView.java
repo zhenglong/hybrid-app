@@ -5,6 +5,7 @@ import java.util.TimerTask;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.graphics.PixelFormat;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Handler;
 import android.os.Message;
@@ -63,10 +64,10 @@ public class EasyTouchView extends View {
         WindowManager.LayoutParams wmParams = new WindowManager.LayoutParams();
         mWMParams = wmParams;
         wmParams.type = (int)LayoutParams.TYPE_SYSTEM_ALERT;
-        wmParams.flags = 40;
+        wmParams.flags = LayoutParams.FLAG_NOT_FOCUSABLE | LayoutParams.FLAG_NOT_TOUCH_MODAL;
         wmParams.width = 100;
         wmParams.height = 100;
-        wmParams.format = -3;
+        wmParams.format = PixelFormat.TRANSLUCENT;
         wm.addView(mTouchView, wmParams);
     }
 
@@ -216,7 +217,8 @@ public class EasyTouchView extends View {
                 mPopuWin.setTouchable(true);
                 mPopuWin.setFocusable(true);
                 mPopuWin.setOutsideTouchable(true);
-                mPopuWin.setContentView(mSettingTable);
+                mPopuWin.setClippingEnabled(false);
+//                mPopuWin.setContentView(mSettingTable);
 
                 if (Math.abs(mOldOffsetX) > midX) {
                     if (mOldOffsetX > 0) {
